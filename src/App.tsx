@@ -1,12 +1,14 @@
-import { Global } from '@emotion/react'
+import { Global, ThemeProvider } from '@emotion/react'
+import Layout from './components/Layout'
 import GlobalStyles from './styles/GlobalStyles'
+import theme from './styles/Theme'
 
 const App = () => {
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <Global styles={GlobalStyles} />
-      <h1>Where in the World?</h1>
-    </>
+      <Layout />
+    </ThemeProvider>
   )
 }
 

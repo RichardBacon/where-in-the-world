@@ -1,4 +1,5 @@
 import { css } from '@emotion/react'
+import theme from './Theme'
 
 const GlobalStyles = css`
   *,
@@ -18,6 +19,9 @@ const GlobalStyles = css`
     min-height: 100dvh;
     line-height: 1.5;
     font-size: 1.6rem;
+    font-family: ${theme.fonts.body};
+    background-color: ${theme.colors.light.background};
+    color: ${theme.colors.light.text};
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeSpeed;
   }

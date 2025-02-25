@@ -1,4 +1,4 @@
-import ModeToggle from './ThemeToggle'
+import ThemeToggle from './ThemeToggle'
 import styled from '@emotion/styled'
 
 const Root = styled.header`
@@ -21,7 +21,7 @@ const Header = () => {
   return (
     <Root>
       <Title>Where in the world?</Title>
-      <ModeToggle />
+      <ThemeToggle />
     </Root>
   )
 }

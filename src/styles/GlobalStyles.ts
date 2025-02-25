@@ -1,5 +1,5 @@
 import { css } from '@emotion/react'
-import theme from './Theme'
+import theme from './theme'
 
 const GlobalStyles = css`
   *,

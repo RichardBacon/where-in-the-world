@@ -16,6 +16,7 @@ declare module '@emotion/react' {
         background: string
         elements: string
         input: string
+        placeholder: string
       }
       dark: {
         text: string

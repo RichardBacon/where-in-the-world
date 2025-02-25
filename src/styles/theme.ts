@@ -13,6 +13,7 @@ const theme = {
       background: 'hsl(0, 0%, 98%)',
       elements: 'hsl(0, 0%, 100%)',
       input: 'hsl(0, 0%, 52%)',
+      placeholder: 'hsl(0, 0%, 80%)',
     },
     dark: {
       text: 'hsl(0, 0%, 100%)',

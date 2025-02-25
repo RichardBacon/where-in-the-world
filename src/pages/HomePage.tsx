@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import CountryGrid from '../components/CountryGrid'
 import RegionFilter from '../components/RegionFilter'
 import SearchBar from '../components/SearchBar'
 
@@ -14,6 +15,7 @@ const HomePage = () => {
     <Root>
       <SearchBar />
       <RegionFilter />
+      <CountryGrid />
     </Root>
   )
 }

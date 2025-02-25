@@ -6,6 +6,7 @@ declare module '@emotion/react' {
       body: string
       weight: {
         light: number
+        regular: number
         semiBold: number
         bold: number
       }

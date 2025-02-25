@@ -3,6 +3,7 @@ const theme = {
     body: "'Nunito Sans', sans-serif",
     weight: {
       light: 300,
+      regular: 400,
       semiBold: 600,
       bold: 800,
     },

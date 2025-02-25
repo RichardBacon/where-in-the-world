@@ -33,20 +33,32 @@ const DetailLabel = styled.span`
   font-weight: ${({ theme }) => theme.fonts.weight.regular};
 `
 
-const CountryCard = () => {
+const CountryCard = ({
+  country,
+}: {
+  country: {
+    name: { common: string; official: string }
+    flags: { png: string }
+    population: number
+    region: string
+    capital: string[]
+  }
+}) => {
+  const { name, flags, population, region, capital } = country
+
   return (
     <Card>
-      <img src='https://flagcdn.com/w640/de.png' alt='Germany' />
+      <img src={flags.png} alt={name.common} />
       <Details>
-        <Title>Germany</Title>
+        <Title>{name.common}</Title>
         <Detail>
-          <DetailLabel>Population:</DetailLabel> 83,019,200
+          <DetailLabel>Population:</DetailLabel> {population}
         </Detail>
         <Detail>
-          <DetailLabel>Region:</DetailLabel> Europe
+          <DetailLabel>Region:</DetailLabel> {region}
         </Detail>
         <Detail>
-          <DetailLabel>Capital:</DetailLabel> Berlin
+          <DetailLabel>Capital:</DetailLabel> {capital.join(', ')}
         </Detail>
       </Details>
     </Card>

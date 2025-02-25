@@ -3,12 +3,27 @@ import CountryCard from './CountryCard'
 
 const Grid = styled.div`
   padding: 0 4rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 4rem;
 `
 
-const CountryGrid = () => {
+interface CountryGridProps {
+  countries: {
+    name: { common: string; official: string }
+    flags: { png: string }
+    population: number
+    region: string
+    capital: string[]
+  }[]
+}
+
+const CountryGrid = ({ countries }: CountryGridProps) => {
   return (
     <Grid>
-      <CountryCard />
+      {countries.map((country) => (
+        <CountryCard key={country.name.common} country={country} />
+      ))}
     </Grid>
   )
 }

@@ -57,7 +57,11 @@ const DropdownIcon = styled(ChevronDownIcon)`
   color: ${({ theme }) => theme.colors.light.text};
 `
 
-const RegionFilter = () => {
+interface RegionFilterProps {
+  setRegion: (region: string) => void
+}
+
+const RegionFilter = ({ setRegion }: RegionFilterProps) => {
   const [isOpen, setIsOpen] = useState(false)
   const [selectedOption, setSelectedOption] = useState('Filter by Region')
 
@@ -66,6 +70,7 @@ const RegionFilter = () => {
   const handleOptionClick = (option: string) => {
     setSelectedOption(option)
     setIsOpen(false)
+    setRegion(option)
   }
 
   return (
@@ -76,14 +81,16 @@ const RegionFilter = () => {
       </DropdownButton>
       {isOpen && (
         <DropdownList>
-          {['Africa', 'America', 'Asia', 'Europe', 'Oceania'].map((option) => (
-            <DropdownListItem
-              key={option}
-              onClick={() => handleOptionClick(option)}
-            >
-              {option}
-            </DropdownListItem>
-          ))}
+          {['All', 'Africa', 'America', 'Asia', 'Europe', 'Oceania'].map(
+            (option) => (
+              <DropdownListItem
+                key={option}
+                onClick={() => handleOptionClick(option)}
+              >
+                {option}
+              </DropdownListItem>
+            ),
+          )}
         </DropdownList>
       )}
     </DropdownContainer>

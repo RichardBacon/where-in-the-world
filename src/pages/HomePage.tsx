@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { useState } from 'react'
 import CountryGrid from '../components/CountryGrid'
 import RegionFilter from '../components/RegionFilter'
 import SearchBar from '../components/SearchBar'
@@ -98,11 +99,18 @@ const Root = styled.div`
 `
 
 const HomePage = () => {
+  const [region, setRegion] = useState('All')
+
+  const filteredCountries = countryData.filter((country) => {
+    if (region === 'All') return true
+    return country.region === region
+  })
+
   return (
     <Root>
       <SearchBar />
-      <RegionFilter />
-      <CountryGrid countries={countryData} />
+      <RegionFilter setRegion={setRegion} />
+      <CountryGrid countries={filteredCountries} />
     </Root>
   )
 }

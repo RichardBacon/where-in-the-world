@@ -31,11 +31,25 @@ const Input = styled.input`
   }
 `
 
-const SearchBar = () => {
+interface SearchBarProps {
+  search: string
+  setSearch: (search: string) => void
+}
+
+const SearchBar = ({ search, setSearch }: SearchBarProps) => {
+  const handleSearch = (value: string) => {
+    setSearch(value)
+  }
+
   return (
     <Root>
       <Icon />
-      <Input type='text' placeholder='Search for a country...' />
+      <Input
+        type='text'
+        placeholder='Search for a country...'
+        value={search}
+        onChange={(e) => handleSearch(e.target.value)}
+      />
     </Root>
   )
 }

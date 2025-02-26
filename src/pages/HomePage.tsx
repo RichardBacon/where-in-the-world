@@ -100,15 +100,19 @@ const Root = styled.div`
 
 const HomePage = () => {
   const [region, setRegion] = useState('All')
+  const [search, setSearch] = useState('')
 
-  const filteredCountries = countryData.filter((country) => {
-    if (region === 'All') return true
-    return country.region === region
-  })
+  const filteredCountries = countryData
+    .filter((country) => region === 'All' || country.region === region)
+    .filter(
+      (country) =>
+        search === '' ||
+        country.name.common.toLowerCase().includes(search.toLowerCase()),
+    )
 
   return (
     <Root>
-      <SearchBar />
+      <SearchBar search={search} setSearch={setSearch} />
       <RegionFilter setRegion={setRegion} />
       <CountryGrid countries={filteredCountries} />
     </Root>

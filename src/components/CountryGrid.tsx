@@ -7,6 +7,11 @@ const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 4rem;
+
+  @media (min-width: 768px) {
+    padding: 0;
+    gap: 8rem;
+  }
 `
 
 interface CountryGridProps {

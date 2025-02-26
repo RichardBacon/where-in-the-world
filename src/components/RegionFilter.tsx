@@ -5,9 +5,6 @@ import { ChevronDownIcon } from '@heroicons/react/24/outline'
 const DropdownContainer = styled.div`
   position: relative;
   width: 20rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
 `
 
 const DropdownButton = styled.button`
@@ -21,15 +18,19 @@ const DropdownButton = styled.button`
   width: 100%;
   text-align: left;
   appearance: none;
-  margin-bottom: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 5rem;
+
+  @media (min-width: 768px) {
+    font-size: 1.4rem;
+  }
 `
 
 const DropdownList = styled.ul`
   position: absolute;
-  top: 100%;
+  top: 110%;
   left: 0;
   right: 0;
   background-color: ${({ theme }) => theme.colors.light.elements};
@@ -49,12 +50,21 @@ const DropdownListItem = styled.li`
   color: ${({ theme }) => theme.colors.light.text};
   font-weight: ${({ theme }) => theme.fonts.weight.regular};
   cursor: pointer;
+
+  @media (min-width: 768px) {
+    font-size: 1.4rem;
+  }
 `
 
 const DropdownIcon = styled(ChevronDownIcon)`
   width: 1.2rem;
   height: 1.2rem;
   color: ${({ theme }) => theme.colors.light.text};
+
+  @media (min-width: 768px) {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
 `
 
 interface RegionFilterProps {

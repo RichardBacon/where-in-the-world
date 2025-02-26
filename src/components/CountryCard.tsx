@@ -16,6 +16,10 @@ const Title = styled.h2`
   font-size: 1.5rem;
   font-weight: ${({ theme }) => theme.fonts.weight.semiBold};
   margin-bottom: 1rem;
+
+  @media (min-width: 768px) {
+    font-size: 2rem;
+  }
 `
 
 const Details = styled.div`
@@ -28,6 +32,10 @@ const Details = styled.div`
 const Detail = styled.p`
   font-size: 1.2rem;
   font-weight: ${({ theme }) => theme.fonts.weight.light};
+
+  @media (min-width: 768px) {
+    font-size: 1.4rem;
+  }
 `
 
 const DetailLabel = styled.span`

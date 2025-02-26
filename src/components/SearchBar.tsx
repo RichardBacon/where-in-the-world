@@ -8,14 +8,25 @@ const Root = styled.div`
   padding: 0 2rem;
   border-radius: 0.5rem;
   background-color: ${({ theme }) => theme.colors.light.elements};
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
   height: 5rem;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    width: 48rem;
+    padding: 0 4rem;
+  }
 `
 
 const Icon = styled(MagnifyingGlassIcon)`
   width: 1.6rem;
   height: 1.6rem;
   color: ${({ theme }) => theme.colors.light.input};
+
+  @media (min-width: 768px) {
+    width: 2rem;
+    height: 2rem;
+  }
 `
 
 const Input = styled.input`
@@ -28,6 +39,10 @@ const Input = styled.input`
 
   &::placeholder {
     color: ${({ theme }) => theme.colors.light.placeholder};
+  }
+
+  @media (min-width: 768px) {
+    font-size: 1.6rem;
   }
 `
 

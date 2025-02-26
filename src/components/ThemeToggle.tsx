@@ -7,11 +7,20 @@ const Button = styled.button`
   gap: 1.2rem;
   font-size: 1.2rem;
   color: ${({ theme }) => theme.colors.light.text};
+
+  @media (min-width: 768px) {
+    font-size: 1.4rem;
+  }
 `
 
 const Icon = styled(MoonIcon)`
   width: 1.6rem;
   height: 1.6rem;
+
+  @media (min-width: 768px) {
+    width: 2rem;
+    height: 2rem;
+  }
 `
 
 const ThemeToggle = () => {

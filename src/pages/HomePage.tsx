@@ -10,6 +10,21 @@ const Root = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4rem;
+
+  @media (min-width: 768px) {
+    padding: 4rem 8rem;
+  }
+`
+
+const Filters = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 `
 
 const HomePage = () => {
@@ -68,8 +83,10 @@ const HomePage = () => {
 
   return (
     <Root>
-      <SearchBar search={search} setSearch={setSearch} />
-      <RegionFilter setRegion={setRegion} regions={regions} />
+      <Filters>
+        <SearchBar search={search} setSearch={setSearch} />
+        <RegionFilter setRegion={setRegion} regions={regions} />
+      </Filters>
       <CountryGrid countries={sortedCountries} />
     </Root>
   )

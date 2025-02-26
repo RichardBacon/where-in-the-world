@@ -5,11 +5,21 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  width: 100%;
-  height: 100%;
+  width: 26rem;
+  height: 32rem;
   border-radius: 0.5rem;
   overflow: hidden;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+
+  @media (min-width: 768px) {
+    height: 36rem;
+  }
+`
+
+const Image = styled.img`
+  width: 100%;
+  height: 17.6rem;
+  object-fit: cover;
 `
 
 const Title = styled.h2`
@@ -51,7 +61,7 @@ const CountryCard = ({ country }: CountryCardProps) => {
 
   return (
     <Card>
-      <img src={flags.png} alt={name.common} />
+      <Image src={flags.png} alt={name.common} />
       <Details>
         <Title>{name.common}</Title>
         <Detail>

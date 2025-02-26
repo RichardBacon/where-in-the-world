@@ -32,9 +32,13 @@ const HomePage = () => {
   const [search, setSearch] = useState('')
   const [countries, setCountries] = useState<Country[]>([])
   const [regions, setRegions] = useState<string[]>([])
-  const sortedCountries = [...countries].sort((a, b) => {
-    return a.name.common.localeCompare(b.name.common)
-  })
+  const sortedCountries = [...countries]
+    .sort((a, b) => {
+      return a.name.common.localeCompare(b.name.common)
+    })
+    .filter((country) => {
+      return country.name.common.toLowerCase().includes(search.toLowerCase())
+    })
 
   useEffect(() => {
     const fetchRegions = async () => {

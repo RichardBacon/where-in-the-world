@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import styled from '@emotion/styled'
 import { ChevronDownIcon } from '@heroicons/react/24/outline'
 
@@ -75,6 +75,20 @@ interface RegionFilterProps {
 const RegionFilter = ({ setRegion, regions }: RegionFilterProps) => {
   const [isOpen, setIsOpen] = useState(false)
   const [selectedOption, setSelectedOption] = useState('Filter by Region')
+  const dropdownRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (!dropdownRef.current?.contains(event.target as Node)) {
+        setIsOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [])
 
   const toggleDropdown = () => setIsOpen(!isOpen)
 
@@ -85,7 +99,7 @@ const RegionFilter = ({ setRegion, regions }: RegionFilterProps) => {
   }
 
   return (
-    <DropdownContainer>
+    <DropdownContainer ref={dropdownRef}>
       <DropdownButton onClick={toggleDropdown}>
         {selectedOption}
         <DropdownIcon />

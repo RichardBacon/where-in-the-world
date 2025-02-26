@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { Country } from '../types/Country'
 
 const Card = styled.div`
   display: flex;
@@ -33,17 +34,11 @@ const DetailLabel = styled.span`
   font-weight: ${({ theme }) => theme.fonts.weight.regular};
 `
 
-const CountryCard = ({
-  country,
-}: {
-  country: {
-    name: { common: string; official: string }
-    flags: { png: string }
-    population: number
-    region: string
-    capital: string[]
-  }
-}) => {
+interface CountryCardProps {
+  country: Country
+}
+
+const CountryCard = ({ country }: CountryCardProps) => {
   const { name, flags, population, region, capital } = country
 
   return (
@@ -58,7 +53,7 @@ const CountryCard = ({
           <DetailLabel>Region:</DetailLabel> {region}
         </Detail>
         <Detail>
-          <DetailLabel>Capital:</DetailLabel> {capital.join(', ')}
+          <DetailLabel>Capital:</DetailLabel> {capital?.join(', ') || 'N/A'}
         </Detail>
       </Details>
     </Card>

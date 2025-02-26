@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { Country } from '../types/Country'
 import CountryCard from './CountryCard'
 
 const Grid = styled.div`
@@ -9,13 +10,7 @@ const Grid = styled.div`
 `
 
 interface CountryGridProps {
-  countries: {
-    name: { common: string; official: string }
-    flags: { png: string }
-    population: number
-    region: string
-    capital: string[]
-  }[]
+  countries: Country[]
 }
 
 const CountryGrid = ({ countries }: CountryGridProps) => {

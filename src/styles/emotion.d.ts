@@ -1,6 +1,14 @@
 import '@emotion/react'
 
 declare module '@emotion/react' {
+  interface ColorScheme {
+    text: string
+    background: string
+    elements: string
+    input: string
+    placeholder: string
+  }
+
   export interface Theme {
     fonts: {
       body: string
@@ -12,20 +20,8 @@ declare module '@emotion/react' {
       }
     }
     colors: {
-      light: {
-        text: string
-        background: string
-        elements: string
-        input: string
-        placeholder: string
-      }
-      dark: {
-        text: string
-        background: string
-        elements: string
-        input: string
-        placeholder: string
-      }
+      light: ColorScheme
+      dark: ColorScheme
     }
     breakpoints: {
       mobile: string

@@ -6,7 +6,7 @@ import SearchBar from '../components/SearchBar'
 import useCountries from '../hooks/useCountries'
 import useRegions from '../hooks/useRegions'
 import Loader from '../components/Loader'
-
+import ErrorMessage from '../components/ErrorMessage'
 const Root = styled.div`
   padding: 2rem 1.6rem;
   display: flex;
@@ -54,7 +54,7 @@ const HomePage = () => {
         <RegionFilter setRegion={setRegion} regions={regions} />
       </Filters>
       {isLoading && <Loader />}
-      {error && <p>{error}</p>}
+      {error && <ErrorMessage message={error} />}
       {!isLoading && !error && <CountryGrid countries={countries} />}
     </Root>
   )

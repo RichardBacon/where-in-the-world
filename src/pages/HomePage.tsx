@@ -1,9 +1,10 @@
 import styled from '@emotion/styled'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import CountryGrid from '../components/CountryGrid'
 import RegionFilter from '../components/RegionFilter'
 import SearchBar from '../components/SearchBar'
-import { Country } from '../types/Country'
+import useCountries from '../hooks/useCountries'
+import useRegions from '../hooks/useRegions'
 
 const Root = styled.div`
   padding: 2rem 1.6rem;
@@ -30,68 +31,20 @@ const Filters = styled.div`
 const HomePage = () => {
   const [region, setRegion] = useState('all')
   const [search, setSearch] = useState('')
-  const [countries, setCountries] = useState<Country[]>([])
-  const [regions, setRegions] = useState<string[]>([])
-  const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
-  const sortedCountries = [...countries]
-    .sort((a, b) => {
-      return a.name.common.localeCompare(b.name.common)
-    })
-    .filter((country) => {
-      return country.name.common.toLowerCase().includes(search.toLowerCase())
-    })
 
-  useEffect(() => {
-    const fetchRegions = async () => {
-      try {
-        setIsLoading(true)
-        const res = await fetch('https://restcountries.com/v3.1/all')
-        if (!res.ok) throw new Error('Something went wrong')
-        const data: Country[] = await res.json()
-        const regions = [
-          ...new Set(data.map((country: Country) => country.region)),
-        ]
-        setRegions(regions)
-      } catch (err) {
-        if (err instanceof Error) {
-          setError(err.message)
-        } else {
-          setError('An unknown error occurred')
-        }
-      } finally {
-        setIsLoading(false)
-      }
-    }
+  const {
+    regions,
+    isLoading: isLoadingRegions,
+    error: errorRegions,
+  } = useRegions()
+  const {
+    countries,
+    isLoading: isLoadingCountries,
+    error: errorCountries,
+  } = useCountries({ region, search })
 
-    fetchRegions()
-  }, [])
-
-  useEffect(() => {
-    const fetchCountries = async () => {
-      try {
-        setIsLoading(true)
-        const res = await fetch(
-          region === 'all'
-            ? 'https://restcountries.com/v3.1/all'
-            : `https://restcountries.com/v3.1/region/${region}`,
-        )
-        if (!res.ok) throw new Error('Something went wrong')
-        const data: Country[] = await res.json()
-        setCountries(data)
-      } catch (err) {
-        if (err instanceof Error) {
-          setError(err.message)
-        } else {
-          setError('An unknown error occurred')
-        }
-      } finally {
-        setIsLoading(false)
-      }
-    }
-
-    fetchCountries()
-  }, [region])
+  const isLoading = isLoadingRegions || isLoadingCountries
+  const error = errorRegions || errorCountries
 
   return (
     <Root>
@@ -103,7 +56,7 @@ const HomePage = () => {
             <SearchBar search={search} setSearch={setSearch} />
             <RegionFilter setRegion={setRegion} regions={regions} />
           </Filters>
-          <CountryGrid countries={sortedCountries} />
+          <CountryGrid countries={countries} />
         </>
       )}
     </Root>

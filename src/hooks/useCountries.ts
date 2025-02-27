@@ -1,6 +1,6 @@
-import useFetch from './useFetch'
+import { useMemo } from 'react'
 import { Country } from '../types/Country'
-
+import useFetch from './useFetch'
 interface UseCountriesProps {
   region: string
   search: string
@@ -15,13 +15,17 @@ const useCountries = ({ region, search }: UseCountriesProps) => {
 
   const { data, isLoading, error } = useFetch<Country[]>({ url })
 
-  const sortedCountries = data
-    ? data
-        .filter((country) =>
-          country.name.common.toLowerCase().includes(search.toLowerCase()),
-        )
-        .sort((a, b) => a.name.common.localeCompare(b.name.common))
-    : []
+  const sortedCountries = useMemo(
+    () =>
+      data
+        ? data
+            .filter((country) =>
+              country.name.common.toLowerCase().includes(search.toLowerCase()),
+            )
+            .sort((a, b) => a.name.common.localeCompare(b.name.common))
+        : [],
+    [data, search],
+  )
 
   return { countries: sortedCountries, isLoading, error }
 }

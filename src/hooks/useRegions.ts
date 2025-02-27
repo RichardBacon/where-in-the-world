@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import useFetch from './useFetch'
 
 const useRegions = () => {
@@ -5,7 +6,10 @@ const useRegions = () => {
     url: 'https://restcountries.com/v3.1/all?fields=region',
   })
 
-  const regions = data ? [...new Set(data.map((entry) => entry.region))] : []
+  const regions = useMemo(
+    () => (data ? [...new Set(data.map((entry) => entry.region))] : []),
+    [data],
+  )
 
   return { regions, isLoading, error }
 }

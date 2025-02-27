@@ -21,7 +21,7 @@ const Card = styled.div<{ isDarkMode: boolean }>`
   }
 `
 
-const Image = styled.img`
+const Flag = styled.img`
   width: 100%;
   height: 17.6rem;
   object-fit: cover;
@@ -67,7 +67,7 @@ const CountryCard = ({ country }: CountryCardProps) => {
 
   return (
     <Card isDarkMode={isDarkMode}>
-      <Image src={flags.png} alt={name.common} />
+      <Flag src={flags.png} alt={`Flag of ${name.common}`} loading='lazy' />
       <Details>
         <Title>{name.common}</Title>
         <Detail>

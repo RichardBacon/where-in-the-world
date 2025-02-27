@@ -20,7 +20,7 @@ const Root = styled.div<{ isDarkMode: boolean }>`
   }
 `
 
-const Icon = styled(MagnifyingGlassIcon)<{ isDarkMode: boolean }>`
+const Icon = styled.div<{ isDarkMode: boolean }>`
   width: 1.6rem;
   height: 1.6rem;
   color: ${({ theme, isDarkMode }) =>
@@ -67,7 +67,9 @@ const SearchBar = ({ search, setSearch }: SearchBarProps) => {
 
   return (
     <Root isDarkMode={isDarkMode}>
-      <Icon isDarkMode={isDarkMode} />
+      <Icon isDarkMode={isDarkMode}>
+        <MagnifyingGlassIcon />
+      </Icon>
       <Input
         isDarkMode={isDarkMode}
         type='text'

@@ -61,7 +61,7 @@ const DropdownListItem = styled.li<{ isDarkMode: boolean }>`
   }
 `
 
-const DropdownIcon = styled(ChevronDownIcon)<{ isDarkMode: boolean }>`
+const DropdownIcon = styled.div<{ isDarkMode: boolean }>`
   width: 1.2rem;
   height: 1.2rem;
   color: ${({ theme, isDarkMode }) =>
@@ -109,11 +109,13 @@ const RegionFilter = ({ setRegion, regions }: RegionFilterProps) => {
     <DropdownContainer ref={dropdownRef}>
       <DropdownButton onClick={toggleDropdown} isDarkMode={isDarkMode}>
         {selectedOption}
-        <DropdownIcon isDarkMode={isDarkMode} />
+        <DropdownIcon isDarkMode={isDarkMode}>
+          <ChevronDownIcon />
+        </DropdownIcon>
       </DropdownButton>
       {isOpen && (
         <DropdownList isDarkMode={isDarkMode}>
-          {Array.from(regions).map((option) => (
+          {regions.map((option) => (
             <DropdownListItem
               key={option}
               onClick={() => handleOptionClick(option)}

@@ -32,6 +32,8 @@ const HomePage = () => {
   const [search, setSearch] = useState('')
   const [countries, setCountries] = useState<Country[]>([])
   const [regions, setRegions] = useState<string[]>([])
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
   const sortedCountries = [...countries]
     .sort((a, b) => {
       return a.name.common.localeCompare(b.name.common)
@@ -43,6 +45,7 @@ const HomePage = () => {
   useEffect(() => {
     const fetchRegions = async () => {
       try {
+        setIsLoading(true)
         const res = await fetch('https://restcountries.com/v3.1/all')
         if (!res.ok) throw new Error('Something went wrong')
         const data: Country[] = await res.json()
@@ -52,10 +55,12 @@ const HomePage = () => {
         setRegions(regions)
       } catch (err) {
         if (err instanceof Error) {
-          console.error(err.message)
+          setError(err.message)
         } else {
-          console.error('An unknown error occurred')
+          setError('An unknown error occurred')
         }
+      } finally {
+        setIsLoading(false)
       }
     }
 
@@ -65,6 +70,7 @@ const HomePage = () => {
   useEffect(() => {
     const fetchCountries = async () => {
       try {
+        setIsLoading(true)
         const res = await fetch(
           region === 'all'
             ? 'https://restcountries.com/v3.1/all'
@@ -75,10 +81,12 @@ const HomePage = () => {
         setCountries(data)
       } catch (err) {
         if (err instanceof Error) {
-          console.error(err.message)
+          setError(err.message)
         } else {
-          console.error('An unknown error occurred')
+          setError('An unknown error occurred')
         }
+      } finally {
+        setIsLoading(false)
       }
     }
 
@@ -87,11 +95,17 @@ const HomePage = () => {
 
   return (
     <Root>
-      <Filters>
-        <SearchBar search={search} setSearch={setSearch} />
-        <RegionFilter setRegion={setRegion} regions={regions} />
-      </Filters>
-      <CountryGrid countries={sortedCountries} />
+      {isLoading && <p>Loading...</p>}
+      {error && <p>{error}</p>}
+      {!isLoading && !error && (
+        <>
+          <Filters>
+            <SearchBar search={search} setSearch={setSearch} />
+            <RegionFilter setRegion={setRegion} regions={regions} />
+          </Filters>
+          <CountryGrid countries={sortedCountries} />
+        </>
+      )}
     </Root>
   )
 }

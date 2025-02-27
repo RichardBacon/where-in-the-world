@@ -71,7 +71,7 @@ const CountryCard = ({ country }: CountryCardProps) => {
       <Details>
         <Title>{name.common}</Title>
         <Detail>
-          <DetailLabel>Population:</DetailLabel> {population}
+          <DetailLabel>Population:</DetailLabel> {population.toLocaleString()}
         </Detail>
         <Detail>
           <DetailLabel>Region:</DetailLabel> {region}

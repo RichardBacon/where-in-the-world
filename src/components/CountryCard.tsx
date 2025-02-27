@@ -1,7 +1,8 @@
 import styled from '@emotion/styled'
 import { Country } from '../types/Country'
+import useCustomTheme from '../hooks/useCustomTheme'
 
-const Card = styled.div`
+const Card = styled.div<{ isDarkMode: boolean }>`
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -10,6 +11,10 @@ const Card = styled.div`
   border-radius: 0.5rem;
   overflow: hidden;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  background-color: ${({ theme, isDarkMode }) =>
+    isDarkMode ? theme.colors.dark.elements : theme.colors.light.elements};
+  color: ${({ theme, isDarkMode }) =>
+    isDarkMode ? theme.colors.dark.text : theme.colors.light.text};
 
   @media (min-width: 768px) {
     height: 36rem;
@@ -58,9 +63,10 @@ interface CountryCardProps {
 
 const CountryCard = ({ country }: CountryCardProps) => {
   const { name, flags, population, region, capital } = country
+  const { isDarkMode } = useCustomTheme()
 
   return (
-    <Card>
+    <Card isDarkMode={isDarkMode}>
       <Image src={flags.png} alt={name.common} />
       <Details>
         <Title>{name.common}</Title>

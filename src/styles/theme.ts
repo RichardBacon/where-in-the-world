@@ -20,6 +20,8 @@ const theme = {
       text: 'hsl(0, 0%, 100%)',
       background: 'hsl(207, 26%, 17%)',
       elements: 'hsl(209, 23%, 22%)',
+      input: 'hsl(0, 0%, 100%)',
+      placeholder: 'hsl(0, 0%, 100%)',
     },
   },
   breakpoints: {

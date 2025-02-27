@@ -23,6 +23,8 @@ declare module '@emotion/react' {
         text: string
         background: string
         elements: string
+        input: string
+        placeholder: string
       }
     }
     breakpoints: {

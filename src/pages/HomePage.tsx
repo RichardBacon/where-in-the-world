@@ -48,17 +48,13 @@ const HomePage = () => {
 
   return (
     <Root>
+      <Filters>
+        <SearchBar search={search} setSearch={setSearch} />
+        <RegionFilter setRegion={setRegion} regions={regions} />
+      </Filters>
       {isLoading && <p>Loading...</p>}
       {error && <p>{error}</p>}
-      {!isLoading && !error && (
-        <>
-          <Filters>
-            <SearchBar search={search} setSearch={setSearch} />
-            <RegionFilter setRegion={setRegion} regions={regions} />
-          </Filters>
-          <CountryGrid countries={countries} />
-        </>
-      )}
+      {!isLoading && !error && <CountryGrid countries={countries} />}
     </Root>
   )
 }

@@ -5,6 +5,7 @@ import RegionFilter from '../components/RegionFilter'
 import SearchBar from '../components/SearchBar'
 import useCountries from '../hooks/useCountries'
 import useRegions from '../hooks/useRegions'
+import Loader from '../components/Loader'
 
 const Root = styled.div`
   padding: 2rem 1.6rem;
@@ -52,7 +53,7 @@ const HomePage = () => {
         <SearchBar search={search} setSearch={setSearch} />
         <RegionFilter setRegion={setRegion} regions={regions} />
       </Filters>
-      {isLoading && <p>Loading...</p>}
+      {isLoading && <Loader />}
       {error && <p>{error}</p>}
       {!isLoading && !error && <CountryGrid countries={countries} />}
     </Root>

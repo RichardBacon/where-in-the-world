@@ -9,9 +9,10 @@ interface ThemeProviderProps {
   children: React.ReactNode
 }
 
-const CustomThemeContext = createContext<ThemeContextType | undefined>(
-  undefined,
-)
+const CustomThemeContext = createContext<ThemeContextType>({
+  isDarkMode: false,
+  toggleTheme: () => {},
+})
 
 const CustomThemeProvider = ({ children }: ThemeProviderProps) => {
   const [isDarkMode, setIsDarkMode] = useState(false)

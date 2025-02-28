@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import { Country } from '../types/Country'
 import useCustomTheme from '../hooks/useCustomTheme'
+import { Link } from 'react-router-dom'
 
 const Card = styled.div<{ isDarkMode: boolean }>`
   display: flex;
@@ -66,21 +67,23 @@ const CountryCard = ({ country }: CountryCardProps) => {
   const { isDarkMode } = useCustomTheme()
 
   return (
-    <Card isDarkMode={isDarkMode}>
-      <Flag src={flags.png} alt={`Flag of ${name.common}`} loading='lazy' />
-      <Details>
-        <Title>{name.common}</Title>
-        <Detail>
-          <DetailLabel>Population:</DetailLabel> {population.toLocaleString()}
-        </Detail>
-        <Detail>
-          <DetailLabel>Region:</DetailLabel> {region}
-        </Detail>
-        <Detail>
-          <DetailLabel>Capital:</DetailLabel> {capital?.join(', ') || 'N/A'}
-        </Detail>
-      </Details>
-    </Card>
+    <Link to={`/country/${name.common}`}>
+      <Card isDarkMode={isDarkMode}>
+        <Flag src={flags.png} alt={`Flag of ${name.common}`} loading='lazy' />
+        <Details>
+          <Title>{name.common}</Title>
+          <Detail>
+            <DetailLabel>Population:</DetailLabel> {population.toLocaleString()}
+          </Detail>
+          <Detail>
+            <DetailLabel>Region:</DetailLabel> {region}
+          </Detail>
+          <Detail>
+            <DetailLabel>Capital:</DetailLabel> {capital?.join(', ') || 'N/A'}
+          </Detail>
+        </Details>
+      </Card>
+    </Link>
   )
 }
 

@@ -7,7 +7,8 @@ interface UseCountryProps {
 }
 
 const useCountry = ({ name }: UseCountryProps) => {
-  const fields = 'name,capital,population,flags,region,subregion'
+  const fields =
+    'name,nativeName,capital,population,flags,region,subregion,tld,currencies,languages'
   const url = `https://restcountries.com/v3.1/name/${name}?fields=${fields}`
   const { data, isLoading, error } = useFetch<Country[]>({ url })
   const country = useMemo(() => data?.[0], [data])

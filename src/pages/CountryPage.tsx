@@ -1,13 +1,13 @@
 import styled from '@emotion/styled'
 import { useParams } from 'react-router-dom'
 import BackButton from '../components/BackButton'
-import CountryCard from '../components/CountryCard'
+import CountryDetails from '../components/CountryDetails'
 import ErrorMessage from '../components/ErrorMessage'
 import Loader from '../components/Loader'
 import useCountry from '../hooks/useCountry'
 
 const Root = styled.div`
-  padding: 2rem 1.6rem;
+  padding: 4rem 2.4rem;
   display: flex;
   flex-direction: column;
   gap: 4rem;
@@ -33,7 +33,7 @@ const CountryPage = () => {
       <BackButton />
       {isLoading && <Loader />}
       {error && <ErrorMessage message={error} />}
-      {!isLoading && !error && country && <CountryCard country={country} />}
+      {!isLoading && !error && country && <CountryDetails country={country} />}
     </Root>
   )
 }

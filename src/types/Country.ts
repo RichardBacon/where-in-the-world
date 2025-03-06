@@ -26,4 +26,5 @@ export interface Country {
   languages: {
     [key: string]: string
   }
+  borders?: string[]
 }

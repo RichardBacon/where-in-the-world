@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
-import { Country } from '../types/Country'
 import useCustomTheme from '../hooks/useCustomTheme'
+import { Country } from '../types/Country'
+import BorderCountries from './BorderCountries'
 
 const Root = styled.div<{ isDarkMode: boolean }>`
   display: flex;
@@ -14,6 +15,12 @@ const Root = styled.div<{ isDarkMode: boolean }>`
     align-items: center;
     gap: 8rem;
   }
+`
+
+const ContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
 `
 
 const Flag = styled.img`
@@ -77,53 +84,58 @@ const CountryDetails = ({ country }: CountryDetailsProps) => {
     tld,
     currencies,
     languages,
+    borders,
   } = country
   const { isDarkMode } = useCustomTheme()
 
   return (
     <Root isDarkMode={isDarkMode}>
       <Flag src={flags.png} alt={`Flag of ${name.common}`} loading='lazy' />
-      <div>
-        <Title>{name.common}</Title>
-        <DetailsContainer>
-          <Details>
-            <Detail>
-              <DetailLabel>Native Name:</DetailLabel>{' '}
-              {name.nativeName?.[Object.keys(name.nativeName)[0]]?.common ||
-                'N/A'}
-            </Detail>
-            <Detail>
-              <DetailLabel>Population:</DetailLabel>{' '}
-              {population.toLocaleString()}
-            </Detail>
-            <Detail>
-              <DetailLabel>Region:</DetailLabel> {region}
-            </Detail>
-            <Detail>
-              <DetailLabel>Subregion:</DetailLabel> {subregion}
-            </Detail>
-            <Detail>
-              <DetailLabel>Capital:</DetailLabel> {capital?.join(', ') || 'N/A'}
-            </Detail>
-          </Details>
-          <Details>
-            <Detail>
-              <DetailLabel>Top Level Domain:</DetailLabel>{' '}
-              {tld?.join(', ') || 'N/A'}
-            </Detail>
-            <Detail>
-              <DetailLabel>Currencies:</DetailLabel>{' '}
-              {Object.values(currencies)
-                .map((currency) => currency.name)
-                .join(', ') || 'N/A'}
-            </Detail>
-            <Detail>
-              <DetailLabel>Languages:</DetailLabel>{' '}
-              {Object.values(languages).join(', ') || 'N/A'}
-            </Detail>
-          </Details>
-        </DetailsContainer>
-      </div>
+      <ContentContainer>
+        <div>
+          <Title>{name.common}</Title>
+          <DetailsContainer>
+            <Details>
+              <Detail>
+                <DetailLabel>Native Name:</DetailLabel>{' '}
+                {name.nativeName?.[Object.keys(name.nativeName)[0]]?.common ||
+                  'N/A'}
+              </Detail>
+              <Detail>
+                <DetailLabel>Population:</DetailLabel>{' '}
+                {population.toLocaleString()}
+              </Detail>
+              <Detail>
+                <DetailLabel>Region:</DetailLabel> {region}
+              </Detail>
+              <Detail>
+                <DetailLabel>Subregion:</DetailLabel> {subregion}
+              </Detail>
+              <Detail>
+                <DetailLabel>Capital:</DetailLabel>{' '}
+                {capital?.join(', ') || 'N/A'}
+              </Detail>
+            </Details>
+            <Details>
+              <Detail>
+                <DetailLabel>Top Level Domain:</DetailLabel>{' '}
+                {tld?.join(', ') || 'N/A'}
+              </Detail>
+              <Detail>
+                <DetailLabel>Currencies:</DetailLabel>{' '}
+                {Object.values(currencies)
+                  .map((currency) => currency.name)
+                  .join(', ') || 'N/A'}
+              </Detail>
+              <Detail>
+                <DetailLabel>Languages:</DetailLabel>{' '}
+                {Object.values(languages).join(', ') || 'N/A'}
+              </Detail>
+            </Details>
+          </DetailsContainer>
+        </div>
+        <BorderCountries borders={borders || []} />
+      </ContentContainer>
     </Root>
   )
 }

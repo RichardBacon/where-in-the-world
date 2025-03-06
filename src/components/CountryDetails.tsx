@@ -3,6 +3,7 @@ import useCustomTheme from '../hooks/useCustomTheme'
 import { Country } from '../types/Country'
 import BorderCountries from './BorderCountries'
 import CountryFlag from './CountryFlag'
+import CountryDetail from './CountryDetail'
 
 const Root = styled.div<{ isDarkMode: boolean }>`
   display: flex;
@@ -46,19 +47,10 @@ const DetailsContainer = styled.div`
   }
 `
 
-const Details = styled.div`
+const DetailSection = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-`
-
-const Detail = styled.p`
-  font-size: 1.6rem;
-  font-weight: ${({ theme }) => theme.fonts.weight.light};
-`
-
-const DetailLabel = styled.span`
-  font-weight: ${({ theme }) => theme.fonts.weight.semiBold};
 `
 
 interface CountryDetailsProps {
@@ -87,43 +79,43 @@ const CountryDetails = ({ country }: CountryDetailsProps) => {
         <div>
           <Title>{name.common}</Title>
           <DetailsContainer>
-            <Details>
-              <Detail>
-                <DetailLabel>Native Name:</DetailLabel>{' '}
-                {name.nativeName?.[Object.keys(name.nativeName)[0]]?.common ||
-                  'N/A'}
-              </Detail>
-              <Detail>
-                <DetailLabel>Population:</DetailLabel>{' '}
-                {population.toLocaleString()}
-              </Detail>
-              <Detail>
-                <DetailLabel>Region:</DetailLabel> {region}
-              </Detail>
-              <Detail>
-                <DetailLabel>Subregion:</DetailLabel> {subregion}
-              </Detail>
-              <Detail>
-                <DetailLabel>Capital:</DetailLabel>{' '}
-                {capital?.join(', ') || 'N/A'}
-              </Detail>
-            </Details>
-            <Details>
-              <Detail>
-                <DetailLabel>Top Level Domain:</DetailLabel>{' '}
-                {tld?.join(', ') || 'N/A'}
-              </Detail>
-              <Detail>
-                <DetailLabel>Currencies:</DetailLabel>{' '}
-                {Object.values(currencies)
-                  .map((currency) => currency.name)
-                  .join(', ') || 'N/A'}
-              </Detail>
-              <Detail>
-                <DetailLabel>Languages:</DetailLabel>{' '}
-                {Object.values(languages).join(', ') || 'N/A'}
-              </Detail>
-            </Details>
+            <DetailSection>
+              <CountryDetail
+                label='Native Name'
+                value={
+                  name.nativeName?.[Object.keys(name.nativeName)[0]]?.common ||
+                  'N/A'
+                }
+              />
+              <CountryDetail
+                label='Population'
+                value={population.toLocaleString()}
+              />
+              <CountryDetail label='Region' value={region} />
+              <CountryDetail label='Subregion' value={subregion} />
+              <CountryDetail
+                label='Capital'
+                value={capital?.join(', ') || 'N/A'}
+              />
+            </DetailSection>
+            <DetailSection>
+              <CountryDetail
+                label='Top Level Domain'
+                value={tld?.join(', ') || 'N/A'}
+              />
+              <CountryDetail
+                label='Currencies'
+                value={
+                  Object.values(currencies)
+                    .map((currency) => currency.name)
+                    .join(', ') || 'N/A'
+                }
+              />
+              <CountryDetail
+                label='Languages'
+                value={Object.values(languages).join(', ') || 'N/A'}
+              />
+            </DetailSection>
           </DetailsContainer>
         </div>
         <BorderCountries borders={borders || []} />

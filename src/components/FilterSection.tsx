@@ -1,0 +1,35 @@
+import styled from '@emotion/styled'
+import RegionFilter from './RegionFilter'
+import SearchBar from './SearchBar'
+
+const Filters = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+`
+
+interface FilterSectionProps {
+  search: string
+  setSearch: (search: string) => void
+  setRegion: (region: string) => void
+  regions: string[]
+}
+
+const FilterSection = ({
+  search,
+  setSearch,
+  setRegion,
+  regions,
+}: FilterSectionProps) => (
+  <Filters>
+    <SearchBar search={search} setSearch={setSearch} />
+    <RegionFilter setRegion={setRegion} regions={regions} />
+  </Filters>
+)
+
+export default FilterSection

@@ -1,12 +1,8 @@
 import styled from '@emotion/styled'
-import { useState } from 'react'
-import CountryGrid from '../components/CountryGrid'
-import RegionFilter from '../components/RegionFilter'
-import SearchBar from '../components/SearchBar'
-import useCountries from '../hooks/useCountries'
-import useRegions from '../hooks/useRegions'
-import Loader from '../components/Loader'
-import ErrorMessage from '../components/ErrorMessage'
+import ContentSection from '../components/ContentSection'
+import FilterSection from '../components/FilterSection'
+import useCountryFilters from '../hooks/useCountryFilters'
+
 const Root = styled.div`
   padding: 2rem 1.6rem;
   display: flex;
@@ -18,44 +14,23 @@ const Root = styled.div`
   }
 `
 
-const Filters = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-
-  @media (min-width: 768px) {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-`
-
 const HomePage = () => {
-  const [region, setRegion] = useState('all')
-  const [search, setSearch] = useState('')
-
-  const {
-    regions,
-    isLoading: isLoadingRegions,
-    error: errorRegions,
-  } = useRegions()
-  const {
-    countries,
-    isLoading: isLoadingCountries,
-    error: errorCountries,
-  } = useCountries({ region, search })
-
-  const isLoading = isLoadingRegions || isLoadingCountries
-  const error = errorRegions || errorCountries
+  const { filters, setters, regions, countries, isLoading, error } =
+    useCountryFilters()
 
   return (
     <Root>
-      <Filters>
-        <SearchBar search={search} setSearch={setSearch} />
-        <RegionFilter setRegion={setRegion} regions={regions} />
-      </Filters>
-      {isLoading && <Loader />}
-      {error && <ErrorMessage message={error} />}
-      {!isLoading && !error && <CountryGrid countries={countries} />}
+      <FilterSection
+        search={filters.search}
+        setSearch={setters.setSearch}
+        setRegion={setters.setRegion}
+        regions={regions}
+      />
+      <ContentSection
+        isLoading={isLoading}
+        error={error}
+        countries={countries}
+      />
     </Root>
   )
 }

@@ -1,7 +1,8 @@
 import styled from '@emotion/styled'
-import { Country } from '../types/Country'
-import useCustomTheme from '../hooks/useCustomTheme'
 import { Link } from 'react-router-dom'
+import useCustomTheme from '../hooks/useCustomTheme'
+import { Country } from '../types/Country'
+import CountryFlag from './CountryFlag'
 
 const Card = styled.div<{ isDarkMode: boolean }>`
   display: flex;
@@ -20,12 +21,6 @@ const Card = styled.div<{ isDarkMode: boolean }>`
   @media (min-width: 768px) {
     height: 36rem;
   }
-`
-
-const Flag = styled.img`
-  width: 100%;
-  height: 17.6rem;
-  object-fit: cover;
 `
 
 const Title = styled.h2`
@@ -69,7 +64,7 @@ const CountryCard = ({ country }: CountryCardProps) => {
   return (
     <Link to={`/country/${name.common}`}>
       <Card isDarkMode={isDarkMode}>
-        <Flag src={flags.png} alt={`Flag of ${name.common}`} loading='lazy' />
+        <CountryFlag img={flags.png} name={name.common} />
         <Details>
           <Title>{name.common}</Title>
           <Detail>

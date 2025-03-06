@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 import useCustomTheme from '../hooks/useCustomTheme'
 import { Country } from '../types/Country'
 import BorderCountries from './BorderCountries'
+import CountryFlag from './CountryFlag'
 
 const Root = styled.div<{ isDarkMode: boolean }>`
   display: flex;
@@ -21,15 +22,6 @@ const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4rem;
-`
-
-const Flag = styled.img`
-  flex-basis: 100%;
-  object-fit: cover;
-
-  @media (min-width: 768px) {
-    flex-basis: 48rem;
-  }
 `
 
 const Title = styled.h2`
@@ -90,7 +82,7 @@ const CountryDetails = ({ country }: CountryDetailsProps) => {
 
   return (
     <Root isDarkMode={isDarkMode}>
-      <Flag src={flags.png} alt={`Flag of ${name.common}`} loading='lazy' />
+      <CountryFlag img={flags.png} name={name.common} />
       <ContentContainer>
         <div>
           <Title>{name.common}</Title>

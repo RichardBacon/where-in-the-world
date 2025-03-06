@@ -1,6 +1,7 @@
-import ThemeToggle from './ThemeToggle'
 import styled from '@emotion/styled'
+import { Link } from 'react-router-dom'
 import useCustomTheme from '../hooks/useCustomTheme'
+import ThemeToggle from './ThemeToggle'
 
 const Root = styled.header<{ isDarkMode: boolean }>`
   display: flex;
@@ -33,7 +34,9 @@ const Header = () => {
 
   return (
     <Root isDarkMode={isDarkMode}>
-      <Title isDarkMode={isDarkMode}>Where in the world?</Title>
+      <Link to='/'>
+        <Title isDarkMode={isDarkMode}>Where in the world?</Title>
+      </Link>
       <ThemeToggle />
     </Root>
   )

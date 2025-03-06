@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { Link } from 'react-router-dom'
 import useCustomTheme from '../hooks/useCustomTheme'
-import { Country } from '../types/Country'
+import { CountryCardData } from '../types/Country'
 import CountryFlag from './CountryFlag'
 
 const Card = styled.div<{ isDarkMode: boolean }>`
@@ -54,7 +54,7 @@ const DetailLabel = styled.span`
 `
 
 interface CountryCardProps {
-  country: Country
+  country: CountryCardData
 }
 
 const CountryCard = ({ country }: CountryCardProps) => {

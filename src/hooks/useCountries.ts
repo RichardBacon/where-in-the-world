@@ -1,19 +1,28 @@
 import { useMemo } from 'react'
-import { Country } from '../types/Country'
+import { CountryCardData } from '../types/Country'
 import useFetch from './useFetch'
 interface UseCountriesProps {
   region: string
   search: string
 }
 
-const useCountries = ({ region, search }: UseCountriesProps) => {
+interface UseCountriesReturn {
+  countries: CountryCardData[]
+  isLoading: boolean
+  error: string | null
+}
+
+const useCountries = ({
+  region,
+  search,
+}: UseCountriesProps): UseCountriesReturn => {
   const fields = 'name,capital,population,flags,region,subregion'
   const url =
     region === 'all'
       ? `https://restcountries.com/v3.1/all?fields=${fields}`
       : `https://restcountries.com/v3.1/region/${region}?fields=${fields}`
 
-  const { data, isLoading, error } = useFetch<Country[]>({ url })
+  const { data, isLoading, error } = useFetch<CountryCardData[]>({ url })
 
   const sortedCountries = useMemo(
     () =>

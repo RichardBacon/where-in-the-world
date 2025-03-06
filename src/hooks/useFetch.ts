@@ -5,7 +5,16 @@ interface UseFetchProps<T> {
   initialData?: T
 }
 
-const useFetch = <T>({ url, initialData }: UseFetchProps<T>) => {
+interface UseFetchReturn<T> {
+  data: T | null
+  isLoading: boolean
+  error: string | null
+}
+
+const useFetch = <T>({
+  url,
+  initialData,
+}: UseFetchProps<T>): UseFetchReturn<T> => {
   const [data, setData] = useState<T | null>(initialData || null)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)

@@ -1,8 +1,23 @@
 import { useState } from 'react'
-import useRegions from './useRegions'
+import { CountryCardData } from '../types/Country'
 import useCountries from './useCountries'
+import useRegions from './useRegions'
+interface CountryFiltersReturn {
+  filters: {
+    region: string
+    search: string
+  }
+  setters: {
+    setRegion: (region: string) => void
+    setSearch: (search: string) => void
+  }
+  regions: string[]
+  countries: CountryCardData[]
+  isLoading: boolean
+  error: string | null
+}
 
-const useCountryFilters = () => {
+const useCountryFilters = (): CountryFiltersReturn => {
   const [region, setRegion] = useState('all')
   const [search, setSearch] = useState('')
 

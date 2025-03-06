@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import useCustomTheme from '../hooks/useCustomTheme'
-import { Country } from '../types/Country'
+import { CountryDetailData } from '../types/Country'
 import BorderCountries from './BorderCountries'
 import CountryFlag from './CountryFlag'
 import CountryDetail from './CountryDetail'
@@ -54,7 +54,7 @@ const DetailSection = styled.div`
 `
 
 interface CountryDetailsProps {
-  country: Country
+  country: CountryDetailData
 }
 
 const CountryDetails = ({ country }: CountryDetailsProps) => {

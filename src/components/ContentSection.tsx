@@ -1,4 +1,4 @@
-import { Country } from '../types/Country'
+import { CountryCardData } from '../types/Country'
 import CountryGrid from './CountryGrid'
 import ErrorMessage from './ErrorMessage'
 import Loader from './Loader'
@@ -6,7 +6,7 @@ import Loader from './Loader'
 interface ContentSectionProps {
   isLoading: boolean
   error: string | null
-  countries: Country[]
+  countries: CountryCardData[]
 }
 
 const ContentSection = ({

@@ -28,3 +28,10 @@ export interface Country {
   }
   borders?: string[]
 }
+
+export type CountryCardData = Pick<
+  Country,
+  'name' | 'population' | 'region' | 'capital' | 'flags'
+>
+
+export type CountryDetailData = Country

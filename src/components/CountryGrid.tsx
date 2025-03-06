@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { Country } from '../types/Country'
+import { CountryCardData } from '../types/Country'
 import CountryCard from './CountryCard'
 
 const Grid = styled.div`
@@ -15,7 +15,7 @@ const Grid = styled.div`
 `
 
 interface CountryGridProps {
-  countries: Country[]
+  countries: CountryCardData[]
 }
 
 const CountryGrid = ({ countries }: CountryGridProps) => {

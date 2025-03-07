@@ -1,16 +1,12 @@
-import { describe, it, expect } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { describe, expect, it } from 'vitest'
+import { render } from '../test-utils/customRender'
 import ThemeToggle from './ThemeToggle'
-import CustomThemeProvider from '../context/CustomThemeContext'
 
 describe('ThemeToggle', () => {
   it('renders and toggles theme correctly', async () => {
-    render(
-      <CustomThemeProvider>
-        <ThemeToggle />
-      </CustomThemeProvider>,
-    )
+    render(<ThemeToggle />)
 
     const button = screen.getByRole('switch')
     expect(screen.getByText('Dark Mode')).toBeInTheDocument()
@@ -22,11 +18,7 @@ describe('ThemeToggle', () => {
   })
 
   it('works with keyboard interaction', async () => {
-    render(
-      <CustomThemeProvider>
-        <ThemeToggle />
-      </CustomThemeProvider>,
-    )
+    render(<ThemeToggle />)
 
     const button = screen.getByRole('switch')
     button.focus()

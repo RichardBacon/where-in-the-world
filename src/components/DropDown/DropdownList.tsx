@@ -64,7 +64,7 @@ const DropdownList = ({
     isDarkMode={isDarkMode}
     role='listbox'
     id='region-list'
-    aria-label='Select a region'
+    aria-label='Available regions'
   >
     {options.map((option, index) => (
       <DropdownListItem
@@ -73,8 +73,8 @@ const DropdownList = ({
         isDarkMode={isDarkMode}
         role='option'
         aria-selected={option === selectedValue}
-        tabIndex={-1}
-        isActive={index === activeIndex}
+        tabIndex={index === activeIndex ? 0 : -1}
+        isActive={option === selectedValue}
       >
         {option}
       </DropdownListItem>

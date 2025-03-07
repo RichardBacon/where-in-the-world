@@ -5,7 +5,7 @@ import Button from './Button'
 import ErrorMessage from './ErrorMessage'
 import Loader from './Loader'
 
-const Root = styled.div`
+const Root = styled.section`
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -39,7 +39,7 @@ const BorderCountries = ({ borders }: BorderCountriesProps) => {
   })
 
   return (
-    <Root>
+    <Root aria-label='Border countries'>
       <Title>Border Countries:</Title>
 
       {isLoading ? (

@@ -26,7 +26,7 @@ const FilterSection = ({
   setRegion,
   regions,
 }: FilterSectionProps) => (
-  <Filters>
+  <Filters aria-label='Filter controls'>
     <SearchBar search={search} setSearch={setSearch} />
     <RegionFilter setRegion={setRegion} regions={regions} />
   </Filters>

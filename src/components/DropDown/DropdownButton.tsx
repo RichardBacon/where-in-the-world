@@ -60,7 +60,7 @@ const DropdownButton = ({
     aria-haspopup='listbox'
     aria-expanded={isOpen}
     aria-controls='region-list'
-    role='combobox'
+    aria-label='Select a region'
   >
     {value || placeholder}
     <DropdownIcon isDarkMode={isDarkMode} aria-hidden='true'>

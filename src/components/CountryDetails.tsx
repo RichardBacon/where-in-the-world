@@ -5,7 +5,7 @@ import BorderCountries from './BorderCountries'
 import CountryFlag from './CountryFlag'
 import CountryDetail from './CountryDetail'
 
-const Root = styled.div<{ isDarkMode: boolean }>`
+const Root = styled.section<{ isDarkMode: boolean }>`
   display: flex;
   flex-direction: column;
   gap: 3.2rem;
@@ -83,7 +83,7 @@ const CountryDetails = ({ country }: CountryDetailsProps) => {
   const { isDarkMode } = useCustomTheme()
 
   return (
-    <Root isDarkMode={isDarkMode}>
+    <Root isDarkMode={isDarkMode} aria-label={`Details for ${name.common}`}>
       <FlagContainer>
         <CountryFlag img={flags.png} name={name.common} />
       </FlagContainer>

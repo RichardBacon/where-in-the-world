@@ -15,7 +15,7 @@ const Root = styled.div`
 `
 
 const HomePage = () => {
-  const { filters, setters, regions, countries, isLoading, error } =
+  const { filters, setters, regions, countries, isLoading, error, retry } =
     useCountryFilters()
 
   return (
@@ -30,6 +30,7 @@ const HomePage = () => {
         isLoading={isLoading}
         error={error}
         countries={countries}
+        retry={retry}
       />
     </Root>
   )

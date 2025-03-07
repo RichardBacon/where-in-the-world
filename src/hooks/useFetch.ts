@@ -9,6 +9,7 @@ interface UseFetchReturn<T> {
   data: T | null
   isLoading: boolean
   error: string | null
+  retry: () => void
 }
 
 const useFetch = <T>({
@@ -18,6 +19,7 @@ const useFetch = <T>({
   const [data, setData] = useState<T | null>(initialData || null)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [retryCount, setRetryCount] = useState(0)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,9 +42,13 @@ const useFetch = <T>({
     }
 
     fetchData()
-  }, [url])
+  }, [url, retryCount])
 
-  return { data, isLoading, error }
+  const retry = () => {
+    setRetryCount((prev) => prev + 1)
+  }
+
+  return { data, isLoading, error, retry }
 }
 
 export default useFetch

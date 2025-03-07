@@ -10,6 +10,7 @@ interface UseBorderCountriesReturn {
   countries: CountryCardData[]
   isLoading: boolean
   error: string | null
+  retry: () => void
 }
 
 const useBorderCountries = ({
@@ -22,13 +23,14 @@ const useBorderCountries = ({
     data,
     isLoading,
     error: fetchError,
+    retry,
   } = useFetch<CountryCardData[]>({ url })
 
   const error = fetchError ? 'Failed to load. Please try again later.' : null
 
   const countries = useMemo(() => data || [], [data])
 
-  return { countries, isLoading, error }
+  return { countries, isLoading, error, retry }
 }
 
 export default useBorderCountries

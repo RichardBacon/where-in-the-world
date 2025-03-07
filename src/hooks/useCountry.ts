@@ -10,6 +10,7 @@ interface UseCountryReturn {
   country: CountryDetailData | undefined
   isLoading: boolean
   error: string | null
+  retry: () => void
 }
 
 const useCountry = ({ name }: UseCountryProps): UseCountryReturn => {
@@ -20,13 +21,14 @@ const useCountry = ({ name }: UseCountryProps): UseCountryReturn => {
     data,
     isLoading,
     error: fetchError,
+    retry,
   } = useFetch<CountryDetailData[]>({ url })
 
   const error = fetchError ? 'Failed to load. Please try again later.' : null
 
   const country = useMemo(() => data?.[0], [data])
 
-  return { country, isLoading, error }
+  return { country, isLoading, error, retry }
 }
 
 export default useCountry

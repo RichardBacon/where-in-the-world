@@ -34,7 +34,9 @@ interface BorderCountriesProps {
 
 const BorderCountries = ({ borders }: BorderCountriesProps) => {
   const navigate = useNavigate()
-  const { countries, isLoading, error } = useBorderCountries({ codes: borders })
+  const { countries, isLoading, error, retry } = useBorderCountries({
+    codes: borders,
+  })
 
   return (
     <Root>
@@ -43,7 +45,7 @@ const BorderCountries = ({ borders }: BorderCountriesProps) => {
       {isLoading ? (
         <Loader />
       ) : error ? (
-        <ErrorMessage message={error} />
+        <ErrorMessage message={error} retry={retry} />
       ) : borders?.length ? (
         <List>
           {countries.map((country) => (

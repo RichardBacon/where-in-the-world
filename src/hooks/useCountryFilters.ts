@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { CountryCardData } from '../types/Country'
 import useCountries from './useCountries'
 import useRegions from './useRegions'
+
 interface CountryFiltersReturn {
   filters: {
     region: string
@@ -15,6 +16,7 @@ interface CountryFiltersReturn {
   countries: CountryCardData[]
   isLoading: boolean
   error: string | null
+  retry: () => void
 }
 
 const useCountryFilters = (): CountryFiltersReturn => {
@@ -31,6 +33,7 @@ const useCountryFilters = (): CountryFiltersReturn => {
     countries,
     isLoading: isLoadingCountries,
     error: errorCountries,
+    retry: retryCountries,
   } = useCountries({ region, search })
 
   return {
@@ -40,6 +43,7 @@ const useCountryFilters = (): CountryFiltersReturn => {
     countries,
     isLoading: isLoadingRegions || isLoadingCountries,
     error: errorRegions || errorCountries,
+    retry: retryCountries,
   }
 }
 

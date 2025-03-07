@@ -1,6 +1,7 @@
 import { useMemo } from 'react'
 import { CountryCardData } from '../types/Country'
 import useFetch from './useFetch'
+
 interface UseCountriesProps {
   region: string
   search: string
@@ -10,6 +11,7 @@ interface UseCountriesReturn {
   countries: CountryCardData[]
   isLoading: boolean
   error: string | null
+  retry: () => void
 }
 
 const useCountries = ({
@@ -26,6 +28,7 @@ const useCountries = ({
     data,
     isLoading,
     error: fetchError,
+    retry,
   } = useFetch<CountryCardData[]>({
     url,
   })
@@ -44,7 +47,7 @@ const useCountries = ({
     [data, search],
   )
 
-  return { countries: sortedCountries, isLoading, error }
+  return { countries: sortedCountries, isLoading, error, retry }
 }
 
 export default useCountries

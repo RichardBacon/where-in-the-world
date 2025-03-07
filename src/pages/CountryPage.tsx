@@ -23,6 +23,7 @@ const CountryPage = () => {
     country,
     isLoading: isLoadingCountry,
     error: errorCountry,
+    retry,
   } = useCountry({ name: name || '' })
 
   const isLoading = isLoadingCountry
@@ -32,7 +33,7 @@ const CountryPage = () => {
     <Root>
       <BackButton />
       {isLoading && <Loader />}
-      {error && <ErrorMessage message={error} />}
+      {error && <ErrorMessage message={error} retry={retry} />}
       {!isLoading && !error && country && <CountryDetails country={country} />}
     </Root>
   )

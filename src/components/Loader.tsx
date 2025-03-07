@@ -16,7 +16,6 @@ const Spinner = styled.div<{ isDarkMode: boolean }>`
   border-radius: 50%;
   width: 8rem;
   height: 8rem;
-  animation: spin 1s linear infinite;
 
   @media (min-width: 768px) {
     border-width: 8px;
@@ -28,6 +27,10 @@ const Spinner = styled.div<{ isDarkMode: boolean }>`
     to {
       transform: rotate(360deg);
     }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation: spin 1s linear infinite;
   }
 `
 

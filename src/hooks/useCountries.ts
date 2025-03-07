@@ -22,7 +22,15 @@ const useCountries = ({
       ? `https://restcountries.com/v3.1/all?fields=${fields}`
       : `https://restcountries.com/v3.1/region/${region}?fields=${fields}`
 
-  const { data, isLoading, error } = useFetch<CountryCardData[]>({ url })
+  const {
+    data,
+    isLoading,
+    error: fetchError,
+  } = useFetch<CountryCardData[]>({
+    url,
+  })
+
+  const error = fetchError ? 'Failed to load. Please try again later.' : null
 
   const sortedCountries = useMemo(
     () =>

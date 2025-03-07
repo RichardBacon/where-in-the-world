@@ -18,7 +18,14 @@ const useBorderCountries = ({
   const fields = 'name'
   const codesString = codes.join(',')
   const url = `https://restcountries.com/v3.1/alpha?codes=${codesString}&fields=${fields}`
-  const { data, isLoading, error } = useFetch<CountryCardData[]>({ url })
+  const {
+    data,
+    isLoading,
+    error: fetchError,
+  } = useFetch<CountryCardData[]>({ url })
+
+  const error = fetchError ? 'Failed to load. Please try again later.' : null
+
   const countries = useMemo(() => data || [], [data])
 
   return { countries, isLoading, error }

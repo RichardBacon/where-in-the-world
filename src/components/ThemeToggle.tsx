@@ -8,20 +8,6 @@ const Button = styled.button<{ isDarkMode: boolean }>`
   gap: 1.2rem;
   padding: 0.8rem;
   border-radius: 0.5rem;
-
-  &:focus-visible {
-    outline: 2px solid
-      ${({ theme, isDarkMode }) =>
-        isDarkMode ? theme.colors.dark.text : theme.colors.light.text};
-    outline-offset: 2px;
-  }
-
-  &:hover {
-    background-color: ${({ theme, isDarkMode }) =>
-      isDarkMode
-        ? theme.colors.dark.background
-        : theme.colors.light.background};
-  }
 `
 
 const Icon = styled.div<{ isDarkMode: boolean }>`

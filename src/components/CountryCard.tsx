@@ -19,13 +19,6 @@ const Card = styled(Link)<{ isDarkMode: boolean }>`
   @media (min-width: 768px) {
     width: 32rem;
   }
-
-  &:focus-visible {
-    outline: 2px solid
-      ${({ theme, isDarkMode }) =>
-        isDarkMode ? theme.colors.dark.text : theme.colors.light.text};
-    outline-offset: 2px;
-  }
 `
 
 const Title = styled.h2`

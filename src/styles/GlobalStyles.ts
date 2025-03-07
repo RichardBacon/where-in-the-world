@@ -58,7 +58,9 @@ const GlobalStyles = () => {
 
     a:focus-visible,
     button:focus-visible {
-      outline: 2px solid currentColor;
+      outline: 2px solid
+        ${isDarkMode ? theme.colors.dark.text : theme.colors.light.text};
+      outline-offset: 2px;
     }
 
     ul {
@@ -83,6 +85,14 @@ const GlobalStyles = () => {
     svg {
       display: block;
       max-width: 100%;
+    }
+
+    .rounded {
+      border-radius: 0.5rem;
+    }
+
+    .clip-content {
+      overflow: hidden;
     }
   `
 }

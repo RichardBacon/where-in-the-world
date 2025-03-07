@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import useCustomTheme from '../hooks/useCustomTheme'
 
 const ErrorMessageContainer = styled.div`
   display: flex;
@@ -6,10 +7,11 @@ const ErrorMessageContainer = styled.div`
   align-items: center;
 `
 
-const ErrorMessageText = styled.p`
+const ErrorMessageText = styled.p<{ isDarkMode: boolean }>`
   font-size: 1.6rem;
   font-weight: ${({ theme }) => theme.fonts.weight.semiBold};
-  color: ${({ theme }) => theme.colors.light.text};
+  color: ${({ theme, isDarkMode }) =>
+    isDarkMode ? theme.colors.dark.text : theme.colors.light.text};
 `
 
 interface ErrorMessageProps {
@@ -17,9 +19,11 @@ interface ErrorMessageProps {
 }
 
 const ErrorMessage = ({ message }: ErrorMessageProps) => {
+  const { isDarkMode } = useCustomTheme()
+
   return (
     <ErrorMessageContainer role='alert' aria-live='assertive'>
-      <ErrorMessageText>{message}</ErrorMessageText>
+      <ErrorMessageText isDarkMode={isDarkMode}>{message}</ErrorMessageText>
     </ErrorMessageContainer>
   )
 }

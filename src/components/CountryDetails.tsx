@@ -53,6 +53,16 @@ const DetailSection = styled.div`
   gap: 1rem;
 `
 
+const FlagContainer = styled.div`
+  width: 100%;
+  height: 16rem;
+
+  @media (min-width: 768px) {
+    width: 48rem;
+    height: auto;
+  }
+`
+
 interface CountryDetailsProps {
   country: CountryDetailData
 }
@@ -74,7 +84,9 @@ const CountryDetails = ({ country }: CountryDetailsProps) => {
 
   return (
     <Root isDarkMode={isDarkMode}>
-      <CountryFlag img={flags.png} name={name.common} />
+      <FlagContainer>
+        <CountryFlag img={flags.png} name={name.common} />
+      </FlagContainer>
       <ContentContainer>
         <div>
           <Title>{name.common}</Title>

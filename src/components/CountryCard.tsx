@@ -9,7 +9,6 @@ const Card = styled.div<{ isDarkMode: boolean }>`
   flex-direction: column;
   gap: 1rem;
   width: 26rem;
-  height: 32rem;
   border-radius: 0.5rem;
   overflow: hidden;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
@@ -19,7 +18,7 @@ const Card = styled.div<{ isDarkMode: boolean }>`
     isDarkMode ? theme.colors.dark.text : theme.colors.light.text};
 
   @media (min-width: 768px) {
-    height: 36rem;
+    width: 32rem;
   }
 `
 
@@ -31,6 +30,11 @@ const Title = styled.h2`
   @media (min-width: 768px) {
     font-size: 2rem;
   }
+`
+
+const FlagContainer = styled.div`
+  width: 100%;
+  height: 16rem;
 `
 
 const Details = styled.div`
@@ -64,7 +68,9 @@ const CountryCard = ({ country }: CountryCardProps) => {
   return (
     <Link to={`/country/${name.common}`}>
       <Card isDarkMode={isDarkMode}>
-        <CountryFlag img={flags.png} name={name.common} />
+        <FlagContainer>
+          <CountryFlag img={flags.png} name={name.common} />
+        </FlagContainer>
         <Details>
           <Title>{name.common}</Title>
           <Detail>

@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react'
+import { createContext, ReactNode, useState } from 'react'
 
 interface ThemeContextType {
   isDarkMode: boolean
@@ -6,7 +6,7 @@ interface ThemeContextType {
 }
 
 interface ThemeProviderProps {
-  children: React.ReactNode
+  children: ReactNode
 }
 
 const CustomThemeContext = createContext<ThemeContextType>({

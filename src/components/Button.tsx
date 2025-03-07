@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { ReactNode } from 'react'
 import useCustomTheme from '../hooks/useCustomTheme'
 
 const Root = styled.button<{ isDarkMode: boolean }>`
@@ -18,7 +19,7 @@ const Root = styled.button<{ isDarkMode: boolean }>`
 `
 
 interface ButtonProps {
-  children: React.ReactNode
+  children: ReactNode
   onClick: () => void
 }
 

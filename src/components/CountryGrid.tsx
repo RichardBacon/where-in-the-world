@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import { CountryCardData } from '../types/Country'
 import CountryCard from './CountryCard'
 
-const Grid = styled.div`
+const Grid = styled.section`
   display: grid;
   gap: 4rem;
   grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
@@ -14,7 +14,7 @@ const Grid = styled.div`
 
 const CountryGrid = ({ countries }: { countries: CountryCardData[] }) => {
   return (
-    <Grid>
+    <Grid aria-label='Countries'>
       {countries.map((country, index) => (
         <CountryCard
           key={country.name.common}

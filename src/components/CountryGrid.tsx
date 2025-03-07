@@ -3,26 +3,24 @@ import { CountryCardData } from '../types/Country'
 import CountryCard from './CountryCard'
 
 const Grid = styled.div`
-  padding: 0 4rem;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 4rem;
+  grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
 
   @media (min-width: 768px) {
-    padding: 0;
-    gap: 8rem;
+    grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
   }
 `
 
-interface CountryGridProps {
-  countries: CountryCardData[]
-}
-
-const CountryGrid = ({ countries }: CountryGridProps) => {
+const CountryGrid = ({ countries }: { countries: CountryCardData[] }) => {
   return (
     <Grid>
-      {countries.map((country) => (
-        <CountryCard key={country.name.common} country={country} />
+      {countries.map((country, index) => (
+        <CountryCard
+          key={country.name.common}
+          country={country}
+          isAboveTheFold={index < 8}
+        />
       ))}
     </Grid>
   )

@@ -1,11 +1,14 @@
 import { Global, ThemeProvider } from '@emotion/react'
+import { lazy, Suspense } from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Layout from './components/Layout'
+import Loader from './components/Loader'
 import CustomThemeProvider from './context/CustomThemeContext'
-import HomePage from './pages/HomePage'
 import GlobalStyles from './styles/GlobalStyles'
 import theme from './styles/theme'
-import CountryPage from './pages/CountryPage'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+
+const HomePage = lazy(() => import('./pages/HomePage'))
+const CountryPage = lazy(() => import('./pages/CountryPage'))
 
 const App = () => {
   return (
@@ -14,10 +17,12 @@ const App = () => {
         <ThemeProvider theme={theme}>
           <Global styles={GlobalStyles} />
           <Layout>
-            <Routes>
-              <Route path='/' element={<HomePage />} />
-              <Route path='/country/:name' element={<CountryPage />} />
-            </Routes>
+            <Suspense fallback={<Loader />}>
+              <Routes>
+                <Route path='/' element={<HomePage />} />
+                <Route path='/country/:name' element={<CountryPage />} />
+              </Routes>
+            </Suspense>
           </Layout>
         </ThemeProvider>
       </CustomThemeProvider>

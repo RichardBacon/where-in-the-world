@@ -59,9 +59,10 @@ const DetailLabel = styled.span`
 
 interface CountryCardProps {
   country: CountryCardData
+  isAboveTheFold?: boolean
 }
 
-const CountryCard = ({ country }: CountryCardProps) => {
+const CountryCard = ({ country, isAboveTheFold }: CountryCardProps) => {
   const { name, flags, population, region, capital } = country
   const { isDarkMode } = useCustomTheme()
 
@@ -69,7 +70,11 @@ const CountryCard = ({ country }: CountryCardProps) => {
     <Link to={`/country/${name.common}`}>
       <Card isDarkMode={isDarkMode}>
         <FlagContainer>
-          <CountryFlag img={flags.png} name={name.common} />
+          <CountryFlag
+            img={flags.png}
+            name={name.common}
+            isAboveTheFold={isAboveTheFold}
+          />
         </FlagContainer>
         <Details>
           <Title>{name.common}</Title>

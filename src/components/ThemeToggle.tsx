@@ -6,12 +6,21 @@ const Button = styled.button<{ isDarkMode: boolean }>`
   display: flex;
   align-items: center;
   gap: 1.2rem;
-  font-size: 1.2rem;
-  color: ${({ theme, isDarkMode }) =>
-    isDarkMode ? theme.colors.dark.text : theme.colors.light.text};
+  padding: 0.8rem;
+  border-radius: 0.5rem;
 
-  @media (min-width: 768px) {
-    font-size: 1.4rem;
+  &:focus-visible {
+    outline: 2px solid
+      ${({ theme, isDarkMode }) =>
+        isDarkMode ? theme.colors.dark.text : theme.colors.light.text};
+    outline-offset: 2px;
+  }
+
+  &:hover {
+    background-color: ${({ theme, isDarkMode }) =>
+      isDarkMode
+        ? theme.colors.dark.background
+        : theme.colors.light.background};
   }
 `
 
@@ -27,9 +36,23 @@ const Icon = styled.div<{ isDarkMode: boolean }>`
 const ThemeToggle = () => {
   const { isDarkMode, toggleTheme } = useCustomTheme()
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault()
+      toggleTheme()
+    }
+  }
+
   return (
-    <Button onClick={toggleTheme} isDarkMode={isDarkMode}>
-      <Icon isDarkMode={isDarkMode}>
+    <Button
+      onClick={toggleTheme}
+      onKeyDown={handleKeyDown}
+      isDarkMode={isDarkMode}
+      role='switch'
+      aria-pressed={isDarkMode}
+      aria-label={`Switch to ${isDarkMode ? 'light' : 'dark'} mode`}
+    >
+      <Icon isDarkMode={isDarkMode} aria-hidden='true'>
         {isDarkMode ? <SunIcon /> : <MoonIcon />}
       </Icon>
       <span>{isDarkMode ? 'Light Mode' : 'Dark Mode'}</span>

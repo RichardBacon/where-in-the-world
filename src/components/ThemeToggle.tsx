@@ -35,7 +35,7 @@ const ThemeToggle = () => {
       onKeyDown={handleKeyDown}
       isDarkMode={isDarkMode}
       role='switch'
-      aria-pressed={isDarkMode}
+      aria-checked={isDarkMode}
       aria-label={`Switch to ${isDarkMode ? 'light' : 'dark'} mode`}
     >
       <Icon isDarkMode={isDarkMode} aria-hidden='true'>

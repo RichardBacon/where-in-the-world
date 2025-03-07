@@ -15,6 +15,13 @@ const Root = styled.button<{ isDarkMode: boolean }>`
     isDarkMode ? theme.colors.dark.text : theme.colors.light.text};
   width: 10rem;
   height: 3.6rem;
+
+  &:focus-visible {
+    outline: 2px solid
+      ${({ theme, isDarkMode }) =>
+        isDarkMode ? theme.colors.dark.text : theme.colors.light.text};
+    outline-offset: 2px;
+  }
 `
 
 interface ButtonProps {
@@ -26,7 +33,17 @@ const Button = ({ children, onClick }: ButtonProps) => {
   const { isDarkMode } = useCustomTheme()
 
   return (
-    <Root isDarkMode={isDarkMode} onClick={onClick}>
+    <Root
+      isDarkMode={isDarkMode}
+      onClick={onClick}
+      type='button'
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          onClick()
+          e.preventDefault()
+        }
+      }}
+    >
       {children}
     </Root>
   )

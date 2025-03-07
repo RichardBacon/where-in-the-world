@@ -14,6 +14,13 @@ const Root = styled.div<{ isDarkMode: boolean }>`
   height: 5rem;
   width: 100%;
 
+  &:focus-within {
+    outline: 2px solid
+      ${({ theme, isDarkMode }) =>
+        isDarkMode ? theme.colors.dark.text : theme.colors.light.text};
+    outline-offset: 2px;
+  }
+
   @media (min-width: 768px) {
     width: 48rem;
     padding: 0 4rem;

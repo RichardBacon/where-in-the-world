@@ -7,6 +7,7 @@ declare module '@emotion/react' {
     elements: string
     input: string
     placeholder: string
+    hover: string
   }
 
   export interface Theme {

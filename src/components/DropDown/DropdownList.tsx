@@ -24,15 +24,13 @@ const DropdownListItem = styled.li<{ isDarkMode: boolean; isActive: boolean }>`
   background-color: ${({ theme, isDarkMode, isActive }) =>
     isActive
       ? isDarkMode
-        ? theme.colors.dark.background
-        : theme.colors.light.background
+        ? theme.colors.dark.hover
+        : theme.colors.light.hover
       : 'transparent'};
 
   &:hover {
     background-color: ${({ theme, isDarkMode }) =>
-      isDarkMode
-        ? theme.colors.dark.background
-        : theme.colors.light.background};
+      isDarkMode ? theme.colors.dark.hover : theme.colors.light.hover};
   }
 
   font-size: 1.2rem;

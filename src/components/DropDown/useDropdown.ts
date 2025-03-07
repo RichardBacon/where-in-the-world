@@ -33,6 +33,12 @@ const useDropdown = ({ options, value, onChange }: UseDropdownProps) => {
         break
       case 'Escape':
         setIsOpen(false)
+        e.preventDefault()
+        break
+      case 'Tab':
+        if (isOpen) {
+          e.preventDefault()
+        }
         break
       case 'ArrowDown':
         if (!isOpen) {

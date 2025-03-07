@@ -5,25 +5,36 @@ import { render } from '../test-utils/customRender'
 import ThemeToggle from './ThemeToggle'
 
 describe('ThemeToggle', () => {
-  it('renders and toggles theme correctly', async () => {
+  it('allows users to switch between light and dark modes', async () => {
     render(<ThemeToggle />)
 
-    const button = screen.getByRole('switch')
+    // Initial state
+    const toggle = screen.getByRole('switch', { name: /dark mode/i })
+    expect(toggle).toHaveAttribute('aria-checked', 'false')
     expect(screen.getByText('Dark Mode')).toBeInTheDocument()
-    expect(button).toHaveAttribute('aria-checked', 'false')
 
-    await userEvent.click(button)
-    await screen.findByText('Light Mode')
-    expect(button).toHaveAttribute('aria-checked', 'true')
+    // User toggles theme
+    await userEvent.click(toggle)
+    expect(await screen.findByText('Light Mode')).toBeInTheDocument()
+    expect(toggle).toHaveAttribute('aria-checked', 'true')
+
+    // User toggles back
+    await userEvent.click(toggle)
+    expect(await screen.findByText('Dark Mode')).toBeInTheDocument()
+    expect(toggle).toHaveAttribute('aria-checked', 'false')
   })
 
-  it('works with keyboard interaction', async () => {
+  it('supports keyboard navigation', async () => {
     render(<ThemeToggle />)
 
-    const button = screen.getByRole('switch')
-    button.focus()
+    const toggle = screen.getByRole('switch', { name: /dark mode/i })
 
+    // User navigates with keyboard
+    toggle.focus()
+    expect(toggle).toHaveFocus()
+
+    // User activates with keyboard
     await userEvent.keyboard('{Enter}')
-    await screen.findByText('Light Mode')
+    expect(await screen.findByText('Light Mode')).toBeInTheDocument()
   })
 })

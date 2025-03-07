@@ -5,20 +5,24 @@ import { render } from '../test-utils/customRender'
 import SearchBar from './SearchBar'
 
 describe('SearchBar', () => {
-  it('renders with initial value', () => {
+  it('displays the current search term', () => {
     const setSearch = vi.fn()
-    render(<SearchBar search='initial' setSearch={setSearch} />)
+    render(<SearchBar search='france' setSearch={setSearch} />)
 
-    const input = screen.getByRole('textbox', { name: /search for a country/i })
-    expect(input).toHaveValue('initial')
+    const searchInput = screen.getByRole('textbox', {
+      name: /search for a country/i,
+    })
+    expect(searchInput).toHaveValue('france')
   })
 
-  it('calls setSearch when user types', async () => {
+  it('updates search in real-time as user types', async () => {
     const setSearch = vi.fn()
     render(<SearchBar search='' setSearch={setSearch} />)
 
-    const input = screen.getByRole('textbox', { name: /search for a country/i })
-    await userEvent.type(input, 'france')
+    const searchInput = screen.getByRole('textbox', {
+      name: /search for a country/i,
+    })
+    await userEvent.type(searchInput, 'france')
 
     const calls = setSearch.mock.calls.map((call) => call[0])
     expect(calls).toEqual(['f', 'r', 'a', 'n', 'c', 'e'])

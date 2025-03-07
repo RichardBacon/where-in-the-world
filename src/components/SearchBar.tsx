@@ -67,7 +67,7 @@ const SearchBar = ({ search, setSearch }: SearchBarProps) => {
 
   return (
     <Root isDarkMode={isDarkMode}>
-      <Icon isDarkMode={isDarkMode}>
+      <Icon isDarkMode={isDarkMode} aria-hidden='true'>
         <MagnifyingGlassIcon />
       </Icon>
       <Input
@@ -76,6 +76,7 @@ const SearchBar = ({ search, setSearch }: SearchBarProps) => {
         placeholder='Search for a country...'
         value={search}
         onChange={(e) => handleSearch(e.target.value)}
+        aria-label='Search for a country'
       />
     </Root>
   )

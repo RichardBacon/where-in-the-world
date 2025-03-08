@@ -1,6 +1,7 @@
 import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
+import { testA11y } from '../test-utils/a11yTest'
 import { render } from '../test-utils/customRender'
 import HomePage from './HomePage'
 
@@ -35,10 +36,8 @@ describe('HomePage', () => {
   it('shows countries after initial loading', async () => {
     render(<HomePage />)
 
-    // User sees loading state
     expect(screen.getByRole('status')).toBeInTheDocument()
 
-    // User sees countries
     expect(await screen.findByText('France')).toBeInTheDocument()
     expect(screen.getByText('Brazil')).toBeInTheDocument()
   })
@@ -46,16 +45,13 @@ describe('HomePage', () => {
   it('allows users to search for specific countries', async () => {
     render(<HomePage />)
 
-    // Wait for content to load
     await screen.findByText('France')
 
-    // User searches
     const searchInput = screen.getByRole('textbox', {
       name: /search for a country/i,
     })
     await userEvent.type(searchInput, 'fra')
 
-    // User sees filtered results
     expect(screen.getByText('France')).toBeInTheDocument()
     expect(screen.queryByText('Brazil')).not.toBeInTheDocument()
   })
@@ -68,14 +64,13 @@ describe('HomePage', () => {
 
     render(<HomePage />)
 
-    // User sees error and can retry
     const errorMessage = await screen.findByText(
       'Failed to load. Please try again later.',
     )
     expect(errorMessage).toBeInTheDocument()
+  })
 
-    // Could add: Test retry functionality
-    // const retryButton = screen.getByRole('button', { name: /retry/i })
-    // await userEvent.click(retryButton)
+  it('has no accessibility violations', async () => {
+    await testA11y(<HomePage />)
   })
 })

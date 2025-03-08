@@ -4,6 +4,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { testA11y } from '../test-utils/a11yTest'
 import { render } from '../test-utils/customRender'
 import HomePage from './HomePage'
+import { within } from '@testing-library/react'
 
 const mockCountries = [
   {
@@ -53,6 +54,37 @@ describe('HomePage', () => {
     await userEvent.type(searchInput, 'fra')
 
     expect(screen.getByText('France')).toBeInTheDocument()
+    expect(screen.queryByText('Brazil')).not.toBeInTheDocument()
+  })
+
+  it('filters countries by region', async () => {
+    mockFetch.mockImplementation((url) => {
+      if (
+        url ===
+        'https://restcountries.com/v3.1/region/Europe?fields=name,capital,population,flags,region,subregion'
+      ) {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve([mockCountries[0]]), // Just France
+        })
+      }
+
+      return Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve(mockCountries),
+      })
+    })
+
+    render(<HomePage />)
+    await screen.findByText('France')
+
+    await userEvent.click(
+      screen.getByRole('button', { name: /select a region/i }),
+    )
+    const dropdownList = screen.getByRole('listbox')
+    await userEvent.click(within(dropdownList).getByText('Europe'))
+
+    expect(await screen.findByText('France')).toBeInTheDocument()
     expect(screen.queryByText('Brazil')).not.toBeInTheDocument()
   })
 

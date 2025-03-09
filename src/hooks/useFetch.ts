@@ -30,6 +30,7 @@ const useFetch = <T>({
           throw new Error(`Failed to fetch: ${response.statusText}`)
         const result = await response.json()
         setData(result)
+        setError(null)
       } catch (err) {
         if (err instanceof Error) {
           setError(err.message)

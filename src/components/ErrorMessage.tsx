@@ -26,7 +26,7 @@ const ErrorMessage = ({ message, retry }: ErrorMessageProps) => {
   const { isDarkMode } = useCustomTheme()
 
   return (
-    <ErrorMessageContainer role='alert' aria-live='assertive'>
+    <ErrorMessageContainer role='alert' aria-label={message} aria-live='assertive'>
       <ErrorMessageText isDarkMode={isDarkMode}>{message}</ErrorMessageText>
       <Button onClick={retry}>Retry</Button>
     </ErrorMessageContainer>

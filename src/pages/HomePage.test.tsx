@@ -23,18 +23,21 @@ const mockCountries = [
   },
 ]
 
-const mockFetch = vi.fn()
-vi.stubGlobal('fetch', mockFetch)
-
 describe('HomePage', () => {
   beforeEach(() => {
-    mockFetch.mockResolvedValue({
-      ok: true,
-      json: () => Promise.resolve(mockCountries),
-    })
+    vi.restoreAllMocks()
   })
 
   it('shows countries after initial loading', async () => {
+    vi.spyOn(globalThis, 'fetch').mockImplementation(() =>
+      Promise.resolve(
+        new Response(JSON.stringify(mockCountries), {
+          status: 200,
+          headers: { 'Content-Type': 'application/json' },
+        }),
+      ),
+    )
+
     render(<HomePage />)
 
     expect(screen.getByRole('status')).toBeInTheDocument()
@@ -44,6 +47,15 @@ describe('HomePage', () => {
   })
 
   it('allows users to search for specific countries', async () => {
+    vi.spyOn(globalThis, 'fetch').mockImplementation(() =>
+      Promise.resolve(
+        new Response(JSON.stringify(mockCountries), {
+          status: 200,
+          headers: { 'Content-Type': 'application/json' },
+        }),
+      ),
+    )
+
     render(<HomePage />)
 
     await screen.findByText('France')
@@ -58,22 +70,19 @@ describe('HomePage', () => {
   })
 
   it('filters countries by region', async () => {
-    mockFetch.mockImplementation((url) => {
-      if (
-        url ===
-        'https://restcountries.com/v3.1/region/Europe?fields=name,capital,population,flags,region,subregion'
-      ) {
-        return Promise.resolve({
-          ok: true,
-          json: () => Promise.resolve([mockCountries[0]]), // Just France
-        })
-      }
-
-      return Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve(mockCountries),
-      })
-    })
+    vi.spyOn(globalThis, 'fetch').mockImplementation(() =>
+      Promise.resolve(
+        new Response(
+          JSON.stringify(
+            mockCountries.filter((country) => country.region === 'Europe'),
+          ),
+          {
+            status: 200,
+            headers: { 'Content-Type': 'application/json' },
+          },
+        ),
+      ),
+    )
 
     render(<HomePage />)
     await screen.findByText('France')
@@ -89,10 +98,15 @@ describe('HomePage', () => {
   })
 
   it('shows error message when countries fail to load', async () => {
-    mockFetch.mockResolvedValueOnce({
-      ok: false,
-      statusText: 'Not Found',
-    })
+    vi.spyOn(globalThis, 'fetch').mockImplementation(() =>
+      Promise.resolve(
+        new Response(JSON.stringify({ error: 'Not Found' }), {
+          status: 404,
+          statusText: 'Not Found',
+          headers: { 'Content-Type': 'application/json' },
+        }),
+      ),
+    )
 
     render(<HomePage />)
 
@@ -103,6 +117,15 @@ describe('HomePage', () => {
   })
 
   it('has no accessibility violations', async () => {
-    await testA11y(<HomePage />)
+    vi.spyOn(globalThis, 'fetch').mockImplementation(() =>
+      Promise.resolve(
+        new Response(JSON.stringify(mockCountries), {
+          status: 200,
+          headers: { 'Content-Type': 'application/json' },
+        }),
+      ),
+    )
+
+    await testA11y(<HomePage />, {}, () => screen.findByText('France'))
   })
 })

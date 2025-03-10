@@ -6,7 +6,7 @@ import ErrorMessage from '../components/ErrorMessage'
 import Loader from '../components/Loader'
 import useCountry from '../hooks/useCountry'
 
-const Root = styled.main`
+const Root = styled.div`
   padding: 4rem 2.4rem;
   display: flex;
   flex-direction: column;

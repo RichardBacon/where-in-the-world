@@ -3,7 +3,7 @@ import ContentSection from '../components/ContentSection'
 import FilterSection from '../components/FilterSection'
 import useCountryFilters from '../hooks/useCountryFilters'
 
-const Root = styled.main`
+const Root = styled.div`
   padding: 2rem 1.6rem;
   display: flex;
   flex-direction: column;

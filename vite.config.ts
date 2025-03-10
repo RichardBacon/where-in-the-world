@@ -8,6 +8,16 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: ['./src/test-utils/setupTests.ts'],
+    coverage: {
+      provider: 'v8',
+      all: true,
+      thresholds: {
+        statements: 80,
+        branches: 80,
+        functions: 80,
+        lines: 80,
+      },
+    },
   },
   build: {
     minify: 'terser',

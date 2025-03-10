@@ -30,7 +30,7 @@ describe('HomePage', () => {
     expect(screen.queryByText('Brazil')).not.toBeInTheDocument()
   })
 
-  it('filters countries by region', async () => {
+  it('allows users to filter countries by region', async () => {
     render(<HomePage />, { route: '/' })
     await screen.findByText('France')
 

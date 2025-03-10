@@ -19,6 +19,11 @@ export const mockCountries = [
     population: 214893366,
     region: 'Americas',
     capital: ['Brasília'],
+    subregion: 'South America',
+    tld: ['.br'],
+    currencies: { BRL: { name: 'Brazilian Real', symbol: 'R$' } },
+    languages: { por: 'Portuguese' },
+    borders: ['ARG', 'COL', 'GUF', 'GUY', 'PRY', 'PER', 'SUR', 'URY', 'VEN'],
   },
 ]
 

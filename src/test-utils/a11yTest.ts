@@ -16,7 +16,7 @@ export async function testA11y(
 
   const results = await axe(container, {
     rules: {
-      'color-contrast': { enabled: false },
+      'color-contrast': { enabled: false }, // JSDOM does not support color-contrast
     },
   })
   expect(results.violations.length).toBe(0)

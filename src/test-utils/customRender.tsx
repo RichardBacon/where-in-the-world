@@ -20,6 +20,7 @@ const customRender = (
           <CustomThemeProvider>
             <ThemeProvider theme={theme}>
               <Routes>
+                <Route path='/' element={children} />
                 <Route path='/country/:name' element={children} />
               </Routes>
             </ThemeProvider>

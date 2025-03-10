@@ -1,15 +1,15 @@
 import { screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { http, HttpResponse } from 'msw'
 import { describe, expect, it } from 'vitest'
+import { server } from '../mocks/server'
 import { testA11y } from '../test-utils/a11yTest'
 import { render } from '../test-utils/customRender'
 import HomePage from './HomePage'
-import { server } from '../mocks/server'
-import { http, HttpResponse } from 'msw'
 
 describe('HomePage', () => {
   it('shows countries after initial loading', async () => {
-    render(<HomePage />)
+    render(<HomePage />, { route: '/' })
 
     expect(screen.getByRole('status')).toBeInTheDocument()
     expect(await screen.findByText('France')).toBeInTheDocument()
@@ -17,7 +17,7 @@ describe('HomePage', () => {
   })
 
   it('allows users to search for specific countries', async () => {
-    render(<HomePage />)
+    render(<HomePage />, { route: '/' })
 
     await screen.findByText('France')
 
@@ -31,7 +31,7 @@ describe('HomePage', () => {
   })
 
   it('filters countries by region', async () => {
-    render(<HomePage />)
+    render(<HomePage />, { route: '/' })
     await screen.findByText('France')
 
     await userEvent.click(
@@ -51,7 +51,7 @@ describe('HomePage', () => {
       }),
     )
 
-    render(<HomePage />)
+    render(<HomePage />, { route: '/' })
 
     expect(
       await screen.findByText('Failed to load. Please try again later.'),
@@ -59,6 +59,8 @@ describe('HomePage', () => {
   })
 
   it('has no accessibility violations', async () => {
-    await testA11y(<HomePage />, {}, () => screen.findByText('France'))
+    await testA11y(<HomePage />, { route: '/' }, () =>
+      screen.findByText('France'),
+    )
   })
 })

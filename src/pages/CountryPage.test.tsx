@@ -1,12 +1,12 @@
 import { screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { http, HttpResponse } from 'msw'
 import { beforeEach, describe, expect, it } from 'vitest'
+import { mockCountries } from '../mocks/handlers'
+import { server } from '../mocks/server'
 import { testA11y } from '../test-utils/a11yTest'
 import { render } from '../test-utils/customRender'
 import CountryPage from './CountryPage'
-import { server } from '../mocks/server'
-import { http, HttpResponse } from 'msw'
-import { mockCountries } from '../mocks/handlers'
 
 describe('CountryPage', () => {
   beforeEach(() => {
@@ -56,7 +56,6 @@ describe('CountryPage', () => {
       name: /failed to load/i,
     })
 
-    // Switch to success response
     shouldFail = false
 
     const retryButton = within(errorMessage).getByRole('button', {

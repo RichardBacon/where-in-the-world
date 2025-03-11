@@ -27,17 +27,7 @@ const Button = ({ children, onClick }: ButtonProps) => {
   const { isDarkMode } = useCustomTheme()
 
   return (
-    <Root
-      isDarkMode={isDarkMode}
-      onClick={onClick}
-      type='button'
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          onClick()
-          e.preventDefault()
-        }
-      }}
-    >
+    <Root isDarkMode={isDarkMode} onClick={onClick} type='button'>
       {children}
     </Root>
   )

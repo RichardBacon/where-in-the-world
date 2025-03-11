@@ -16,12 +16,90 @@ describe('useDropdown', () => {
     expect(result.current.activeIndex).toBe(-1)
   })
 
-  it('handles keyboard navigation', () => {
-    const { result } = renderHook(
-      () => useDropdown({ options, value: 'Option 1', onChange }), // Set initial value
+  it('handles space key to open dropdown', () => {
+    const { result } = renderHook(() =>
+      useDropdown({ options, value: '', onChange }),
     )
 
-    // Open with arrow down
+    act(() => {
+      result.current.handleKeyDown({
+        key: ' ',
+        preventDefault: vi.fn(),
+      } as unknown as KeyboardEvent)
+    })
+
+    expect(result.current.isOpen).toBe(true)
+  })
+
+  it('handles tab key when dropdown is open', () => {
+    const { result } = renderHook(() =>
+      useDropdown({ options, value: '', onChange }),
+    )
+
+    act(() => {
+      result.current.setIsOpen(true)
+    })
+
+    act(() => {
+      result.current.handleKeyDown({
+        key: 'Tab',
+        preventDefault: vi.fn(),
+      } as unknown as KeyboardEvent)
+    })
+
+    expect(result.current.isOpen).toBe(true)
+  })
+
+  it('handles tab key when dropdown is closed', () => {
+    const { result } = renderHook(() =>
+      useDropdown({ options, value: '', onChange }),
+    )
+
+    act(() => {
+      result.current.handleKeyDown({
+        key: 'Tab',
+        preventDefault: vi.fn(),
+      } as unknown as KeyboardEvent)
+    })
+
+    expect(result.current.isOpen).toBe(false)
+  })
+
+  it('handles arrow down key to open dropdown', () => {
+    const { result } = renderHook(() =>
+      useDropdown({ options, value: '', onChange }),
+    )
+
+    act(() => {
+      result.current.handleKeyDown({
+        key: 'ArrowDown',
+        preventDefault: vi.fn(),
+      } as unknown as KeyboardEvent)
+    })
+
+    expect(result.current.isOpen).toBe(true)
+  })
+
+  it('handles arrow up key to open dropdown', () => {
+    const { result } = renderHook(() =>
+      useDropdown({ options, value: '', onChange }),
+    )
+
+    act(() => {
+      result.current.handleKeyDown({
+        key: 'ArrowUp',
+        preventDefault: vi.fn(),
+      } as unknown as KeyboardEvent)
+    })
+
+    expect(result.current.isOpen).toBe(true)
+  })
+
+  it('handles keyboard navigation', () => {
+    const { result } = renderHook(() =>
+      useDropdown({ options, value: 'Option 1', onChange }),
+    )
+
     act(() => {
       result.current.handleKeyDown({
         key: 'ArrowDown',
@@ -30,10 +108,25 @@ describe('useDropdown', () => {
     })
     expect(result.current.isOpen).toBe(true)
 
-    // Need to wait for useEffect
     act(() => {
       result.current.handleKeyDown({
         key: 'ArrowDown',
+        preventDefault: vi.fn(),
+      } as unknown as KeyboardEvent)
+    })
+    expect(result.current.activeIndex).toBe(1)
+
+    act(() => {
+      result.current.handleKeyDown({
+        key: 'ArrowDown',
+        preventDefault: vi.fn(),
+      } as unknown as KeyboardEvent)
+    })
+    expect(result.current.activeIndex).toBe(2)
+
+    act(() => {
+      result.current.handleKeyDown({
+        key: 'ArrowUp',
         preventDefault: vi.fn(),
       } as unknown as KeyboardEvent)
     })
@@ -45,12 +138,10 @@ describe('useDropdown', () => {
       useDropdown({ options, value: '', onChange }),
     )
 
-    // Open and set active index
     act(() => {
       result.current.setIsOpen(true)
     })
 
-    // Need to manually set activeIndex since useEffect is async
     act(() => {
       result.current.handleKeyDown({
         key: 'ArrowDown',
@@ -58,7 +149,6 @@ describe('useDropdown', () => {
       } as unknown as KeyboardEvent)
     })
 
-    // Now try to select
     act(() => {
       result.current.handleKeyDown({
         key: 'Enter',

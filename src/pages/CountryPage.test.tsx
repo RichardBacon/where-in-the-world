@@ -66,6 +66,18 @@ describe('CountryPage', () => {
     await screen.findByRole('region', { name: /details for france/i })
   })
 
+  it('allows user to view border country details', async () => {
+    render(<CountryPage />, { route: '/country/france' })
+
+    const borderCountry = await screen.findByRole('button', {
+      name: /belgium/i,
+    })
+
+    await userEvent.click(borderCountry)
+
+    await screen.findByRole('region', { name: /details for belgium/i })
+  })
+
   it('has no accessibility violations', async () => {
     await testA11y(<CountryPage />, { route: '/country/france' }, () =>
       screen.findByRole('region', { name: /details for france/i }),

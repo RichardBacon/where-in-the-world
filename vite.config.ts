@@ -1,5 +1,5 @@
-import { defineConfig } from 'vitest/config'
 import react from '@vitejs/plugin-react'
+import { configDefaults, defineConfig } from 'vitest/config'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -17,6 +17,11 @@ export default defineConfig({
         functions: 80,
         lines: 80,
       },
+      exclude: [
+        ...(configDefaults.coverage?.exclude || []),
+        'src/index.tsx',
+        'src/styles/**',
+      ],
     },
   },
   build: {

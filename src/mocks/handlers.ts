@@ -14,6 +14,18 @@ export const mockCountries = [
     borders: ['DEU', 'ITA', 'LUX', 'BEL', 'GBR', 'ESP'],
   },
   {
+    name: { common: 'Belgium' },
+    flags: { png: 'belgium-flag.png', alt: 'Flag of Belgium' },
+    population: 11492641,
+    region: 'Europe',
+    capital: ['Brussels'],
+    subregion: 'Western Europe',
+    tld: ['.be'],
+    currencies: { EUR: { name: 'Euro', symbol: '€' } },
+    languages: { nld: 'Dutch', fra: 'French', deu: 'German' },
+    borders: ['FRA', 'DEU', 'NLD', 'LUX'],
+  },
+  {
     name: { common: 'Brazil' },
     flags: { png: 'brazil-flag.png', alt: 'Flag of Brazil' },
     population: 214893366,
@@ -27,14 +39,16 @@ export const mockCountries = [
   },
 ]
 
-const mockBorderCountries = [
-  { name: { common: 'Germany' } },
-  { name: { common: 'Italy' } },
-  { name: { common: 'Luxembourg' } },
-  { name: { common: 'Belgium' } },
-  { name: { common: 'United Kingdom' } },
-  { name: { common: 'Spain' } },
-]
+export const mockBorderCountries = {
+  DEU: { name: { common: 'Germany' } },
+  ITA: { name: { common: 'Italy' } },
+  LUX: { name: { common: 'Luxembourg' } },
+  BEL: { name: { common: 'Belgium' } },
+  GBR: { name: { common: 'United Kingdom' } },
+  ESP: { name: { common: 'Spain' } },
+  FRA: { name: { common: 'France' } },
+  NLD: { name: { common: 'Netherlands' } },
+}
 
 export const handlers = [
   http.get('https://restcountries.com/v3.1/all', ({ request }) => {
@@ -68,10 +82,15 @@ export const handlers = [
 
   http.get('https://restcountries.com/v3.1/alpha', ({ request }) => {
     const url = new URL(request.url)
-    const codes = url.searchParams.get('codes')
-    if (codes) {
-      return HttpResponse.json(mockBorderCountries)
-    }
-    return new HttpResponse(null, { status: 404 })
+    const codes = url.searchParams.get('codes')?.split(',') || []
+
+    const matchingBorderCountries = codes
+      .map(
+        (code) =>
+          mockBorderCountries[code as keyof typeof mockBorderCountries] || null,
+      )
+      .filter(Boolean)
+
+    return HttpResponse.json(matchingBorderCountries)
   }),
 ]

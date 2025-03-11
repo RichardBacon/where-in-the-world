@@ -30,6 +30,19 @@ describe('HomePage', () => {
     expect(screen.queryByText('Brazil')).not.toBeInTheDocument()
   })
 
+  it('shows no countries found when no countries match the search', async () => {
+    render(<HomePage />, { route: '/' })
+
+    await screen.findByText('France')
+
+    const searchInput = screen.getByRole('textbox', {
+      name: /search for a country/i,
+    })
+    await userEvent.type(searchInput, 'zzz')
+
+    expect(screen.getByText('No countries found')).toBeInTheDocument()
+  })
+
   it('allows users to filter countries by region', async () => {
     render(<HomePage />, { route: '/' })
     await screen.findByText('France')

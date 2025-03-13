@@ -10,6 +10,23 @@ const DropdownContainer = styled.div`
   width: 20rem;
 `
 
+const DropdownHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`
+
+const DropdownLabel = styled.label<{ isDarkMode: boolean }>`
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: ${({ theme, isDarkMode }) =>
+    isDarkMode ? theme.colors.dark.text : theme.colors.light.text};
+
+  @media (min-width: 768px) {
+    font-size: 1.6rem;
+  }
+`
+
 interface DropdownProps {
   options: string[]
   value: string
@@ -27,13 +44,17 @@ const DropDown = ({ options, value, onChange }: DropdownProps) => {
 
   return (
     <DropdownContainer ref={dropdownRef}>
-      <DropdownButton
-        isDarkMode={isDarkMode}
-        isOpen={isOpen}
-        value={value}
-        onKeyDown={handleKeyDown}
-        onClick={() => setIsOpen(!isOpen)}
-      />
+      <DropdownHeader>
+        <DropdownLabel isDarkMode={isDarkMode}>Filter by Region</DropdownLabel>
+
+        <DropdownButton
+          isDarkMode={isDarkMode}
+          isOpen={isOpen}
+          value={value}
+          onKeyDown={handleKeyDown}
+          onClick={() => setIsOpen(!isOpen)}
+        />
+      </DropdownHeader>
       {isOpen && (
         <DropdownList
           isDarkMode={isDarkMode}

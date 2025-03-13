@@ -43,7 +43,7 @@ const Input = styled.input<{ isDarkMode: boolean }>`
   border: none;
   outline: none;
   background-color: transparent;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   color: ${({ theme, isDarkMode }) =>
     isDarkMode ? theme.colors.dark.input : theme.colors.light.input};
   width: 100%;
@@ -53,10 +53,6 @@ const Input = styled.input<{ isDarkMode: boolean }>`
       isDarkMode
         ? theme.colors.dark.placeholder
         : theme.colors.light.placeholder};
-  }
-
-  @media (min-width: 1024px) {
-    font-size: 1.6rem;
   }
 `
 

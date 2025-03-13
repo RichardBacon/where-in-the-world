@@ -19,7 +19,7 @@ const Root = styled.button<{ isDarkMode: boolean }>`
   justify-content: space-between;
   height: 5rem;
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     font-size: 1.4rem;
   }
 `
@@ -30,7 +30,7 @@ const DropdownIcon = styled.div<{ isDarkMode: boolean }>`
   color: ${({ theme, isDarkMode }) =>
     isDarkMode ? theme.colors.dark.text : theme.colors.light.text};
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     width: 1.6rem;
     height: 1.6rem;
   }

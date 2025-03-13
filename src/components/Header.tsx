@@ -13,7 +13,7 @@ const Root = styled.header<{ isDarkMode: boolean }>`
     isDarkMode ? theme.colors.dark.elements : theme.colors.light.elements};
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     padding: 0 8rem;
   }
 `
@@ -24,7 +24,7 @@ const Title = styled.h1<{ isDarkMode: boolean }>`
   color: ${({ theme, isDarkMode }) =>
     isDarkMode ? theme.colors.dark.text : theme.colors.light.text};
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     font-size: 2.4rem;
   }
 `

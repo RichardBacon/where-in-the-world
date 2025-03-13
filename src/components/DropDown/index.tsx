@@ -22,7 +22,7 @@ const DropdownLabel = styled.label<{ isDarkMode: boolean }>`
   color: ${({ theme, isDarkMode }) =>
     isDarkMode ? theme.colors.dark.text : theme.colors.light.text};
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     font-size: 1.6rem;
   }
 `

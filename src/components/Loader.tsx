@@ -17,7 +17,7 @@ const Spinner = styled.div<{ isDarkMode: boolean }>`
   width: 8rem;
   height: 8rem;
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     border-width: 8px;
     width: 16rem;
     height: 16rem;

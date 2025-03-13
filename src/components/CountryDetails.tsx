@@ -12,7 +12,7 @@ const Root = styled.section<{ isDarkMode: boolean }>`
   color: ${({ theme, isDarkMode }) =>
     isDarkMode ? theme.colors.dark.text : theme.colors.light.text};
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     flex-direction: row;
     align-items: center;
     gap: 8rem;
@@ -30,7 +30,7 @@ const Title = styled.h2`
   font-weight: ${({ theme }) => theme.fonts.weight.semiBold};
   margin-bottom: 1rem;
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     font-size: 3.2rem;
     width: 100%;
   }
@@ -41,7 +41,7 @@ const DetailsContainer = styled.div`
   flex-direction: column;
   gap: 3.2rem;
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     flex-direction: row;
     gap: 8rem;
   }
@@ -57,7 +57,7 @@ const FlagContainer = styled.div`
   width: 100%;
   height: 16rem;
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     width: 48rem;
     height: auto;
   }

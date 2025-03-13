@@ -16,7 +16,7 @@ const Card = styled(Link)<{ isDarkMode: boolean }>`
   color: ${({ theme, isDarkMode }) =>
     isDarkMode ? theme.colors.dark.text : theme.colors.light.text};
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     width: 32rem;
   }
 `
@@ -26,7 +26,7 @@ const Title = styled.h2`
   font-weight: ${({ theme }) => theme.fonts.weight.semiBold};
   margin-bottom: 1rem;
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     font-size: 2rem;
   }
 `
@@ -49,7 +49,7 @@ const Detail = styled.p`
   font-size: 1.2rem;
   font-weight: ${({ theme }) => theme.fonts.weight.light};
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     font-size: 1.4rem;
   }
 `

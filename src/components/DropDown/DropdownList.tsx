@@ -38,7 +38,7 @@ const DropdownListItem = styled.li<{ isDarkMode: boolean; isActive: boolean }>`
     isDarkMode ? theme.colors.dark.text : theme.colors.light.text};
   font-weight: ${({ theme }) => theme.fonts.weight.regular};
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     font-size: 1.4rem;
   }
 `

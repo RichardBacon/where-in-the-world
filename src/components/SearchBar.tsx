@@ -21,7 +21,7 @@ const Root = styled.div<{ isDarkMode: boolean }>`
     outline-offset: 2px;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     width: 48rem;
     padding: 0 4rem;
   }
@@ -33,7 +33,7 @@ const Icon = styled.div<{ isDarkMode: boolean }>`
   color: ${({ theme, isDarkMode }) =>
     isDarkMode ? theme.colors.dark.input : theme.colors.light.input};
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     width: 2rem;
     height: 2rem;
   }
@@ -55,7 +55,7 @@ const Input = styled.input<{ isDarkMode: boolean }>`
         : theme.colors.light.placeholder};
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     font-size: 1.6rem;
   }
 `

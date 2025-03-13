@@ -13,7 +13,7 @@ const Button = styled.button<{ isDarkMode: boolean }>`
 const Icon = styled.div<{ isDarkMode: boolean }>`
   width: 1.6rem;
   height: 1.6rem;
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     width: 2rem;
     height: 2rem;
   }

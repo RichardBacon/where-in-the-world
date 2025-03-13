@@ -9,7 +9,7 @@ const Root = styled.div`
   flex-direction: column;
   gap: 4rem;
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     padding: 4rem 8rem;
   }
 `

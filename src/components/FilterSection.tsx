@@ -7,7 +7,7 @@ const Filters = styled.div`
   flex-direction: column;
   gap: 4rem;
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-end;

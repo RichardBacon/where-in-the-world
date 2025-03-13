@@ -15,7 +15,7 @@ const MessageContainer = styled.div<{ isDarkMode: boolean }>`
   color: ${({ theme, isDarkMode }) =>
     isDarkMode ? theme.colors.dark.text : theme.colors.light.text};
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     font-size: 3.2rem;
   }
 `

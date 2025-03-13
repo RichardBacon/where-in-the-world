@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import useCustomTheme from '../../hooks/useCustomTheme'
 import DropdownButton from './DropdownButton'
 import DropdownList from './DropdownList'
@@ -41,6 +41,22 @@ const DropDown = ({ options, value, onChange }: DropdownProps) => {
     value,
     onChange,
   })
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [setIsOpen])
 
   return (
     <DropdownContainer ref={dropdownRef}>

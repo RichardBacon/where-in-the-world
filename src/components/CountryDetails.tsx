@@ -12,9 +12,9 @@ const Root = styled.section<{ isDarkMode: boolean }>`
   color: ${({ theme, isDarkMode }) =>
     isDarkMode ? theme.colors.dark.text : theme.colors.light.text};
 
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     gap: 8rem;
   }
 `
@@ -55,10 +55,12 @@ const DetailSection = styled.div`
 
 const FlagContainer = styled.div`
   width: 100%;
-  height: 16rem;
+  max-width: 32rem;
+  height: auto;
+  flex-shrink: 0;
 
-  @media (min-width: 1024px) {
-    width: 48rem;
+  @media (min-width: 768px) {
+    width: 32rem;
     height: auto;
   }
 `

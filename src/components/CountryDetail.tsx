@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 
 const Detail = styled.p`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.5rem;
   font-size: 1.6rem;
 `

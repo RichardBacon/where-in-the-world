@@ -4,21 +4,17 @@ import useCustomTheme from '../hooks/useCustomTheme'
 import { CountryCardData } from '../types/Country'
 import CountryFlag from './CountryFlag'
 
-const Card = styled(Link)<{ isDarkMode: boolean }>`
+const Card = styled.div<{ isDarkMode: boolean }>`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  width: 26rem;
+  width: 32rem;
   border-radius: 0.5rem;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
   background-color: ${({ theme, isDarkMode }) =>
     isDarkMode ? theme.colors.dark.elements : theme.colors.light.elements};
   color: ${({ theme, isDarkMode }) =>
     isDarkMode ? theme.colors.dark.text : theme.colors.light.text};
-
-  @media (min-width: 1024px) {
-    width: 32rem;
-  }
 `
 
 const Title = styled.h2`
@@ -68,31 +64,32 @@ const CountryCard = ({ country, isAboveTheFold }: CountryCardProps) => {
   const { isDarkMode } = useCustomTheme()
 
   return (
-    <Card
-      to={`/country/${name.common}`}
-      isDarkMode={isDarkMode}
-      aria-label={`View details for ${name.common}`}
-    >
-      <FlagContainer>
-        <CountryFlag
-          img={flags.png}
-          name={name.common}
-          isAboveTheFold={isAboveTheFold}
-        />
-      </FlagContainer>
-      <Details>
-        <Title>{name.common}</Title>
-        <Detail>
-          <DetailLabel>Population:</DetailLabel> {population.toLocaleString()}
-        </Detail>
-        <Detail>
-          <DetailLabel>Region:</DetailLabel> {region}
-        </Detail>
-        <Detail>
-          <DetailLabel>Capital:</DetailLabel> {capital?.join(', ') || 'N/A'}
-        </Detail>
-      </Details>
-    </Card>
+    <Link to={`/country/${name.common}`}>
+      <Card
+        isDarkMode={isDarkMode}
+        aria-label={`View details for ${name.common}`}
+      >
+        <FlagContainer>
+          <CountryFlag
+            img={flags.png}
+            name={name.common}
+            isAboveTheFold={isAboveTheFold}
+          />
+        </FlagContainer>
+        <Details>
+          <Title>{name.common}</Title>
+          <Detail>
+            <DetailLabel>Population:</DetailLabel> {population.toLocaleString()}
+          </Detail>
+          <Detail>
+            <DetailLabel>Region:</DetailLabel> {region}
+          </Detail>
+          <Detail>
+            <DetailLabel>Capital:</DetailLabel> {capital?.join(', ') || 'N/A'}
+          </Detail>
+        </Details>
+      </Card>
+    </Link>
   )
 }
 

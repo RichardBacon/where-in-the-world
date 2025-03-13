@@ -26,7 +26,7 @@ export interface Country {
   languages: {
     [key: string]: string
   }
-  borders?: string[]
+  borders: string[]
 }
 
 export type CountryCardData = Pick<

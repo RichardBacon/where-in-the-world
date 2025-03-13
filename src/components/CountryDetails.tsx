@@ -130,7 +130,7 @@ const CountryDetails = ({ country }: CountryDetailsProps) => {
             </DetailSection>
           </DetailsContainer>
         </div>
-        <BorderCountries borders={borders || []} />
+        {borders.length > 0 && <BorderCountries borders={borders} />}
       </ContentContainer>
     </Root>
   )

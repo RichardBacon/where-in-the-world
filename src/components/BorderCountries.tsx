@@ -46,7 +46,7 @@ const BorderCountries = ({ borders }: BorderCountriesProps) => {
         <Loader />
       ) : error ? (
         <ErrorMessage message={error} retry={retry} />
-      ) : borders?.length ? (
+      ) : (
         <List>
           {countries.map((country) => (
             <ListItem key={country.name.common}>
@@ -58,8 +58,6 @@ const BorderCountries = ({ borders }: BorderCountriesProps) => {
             </ListItem>
           ))}
         </List>
-      ) : (
-        <p>No border countries</p>
       )}
     </Root>
   )

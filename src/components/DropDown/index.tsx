@@ -14,10 +14,9 @@ interface DropdownProps {
   options: string[]
   value: string
   onChange: (value: string) => void
-  placeholder?: string
 }
 
-const DropDown = ({ options, value, onChange, placeholder }: DropdownProps) => {
+const DropDown = ({ options, value, onChange }: DropdownProps) => {
   const dropdownRef = useRef<HTMLDivElement>(null)
   const { isDarkMode } = useCustomTheme()
   const { isOpen, setIsOpen, activeIndex, handleKeyDown } = useDropdown({
@@ -32,7 +31,6 @@ const DropDown = ({ options, value, onChange, placeholder }: DropdownProps) => {
         isDarkMode={isDarkMode}
         isOpen={isOpen}
         value={value}
-        placeholder={placeholder}
         onKeyDown={handleKeyDown}
         onClick={() => setIsOpen(!isOpen)}
       />

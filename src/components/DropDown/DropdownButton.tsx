@@ -40,7 +40,6 @@ interface DropdownButtonProps {
   isDarkMode: boolean
   isOpen: boolean
   value: string
-  placeholder?: string
   onKeyDown: (e: React.KeyboardEvent) => void
   onClick: () => void
 }
@@ -49,7 +48,6 @@ const DropdownButton = ({
   isDarkMode,
   isOpen,
   value,
-  placeholder,
   onKeyDown,
   onClick,
 }: DropdownButtonProps) => (
@@ -62,7 +60,7 @@ const DropdownButton = ({
     aria-controls='region-list'
     aria-label='Select a region'
   >
-    {value || placeholder}
+    {value}
     <DropdownIcon isDarkMode={isDarkMode} aria-hidden='true'>
       <ChevronDownIcon />
     </DropdownIcon>

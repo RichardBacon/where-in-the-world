@@ -7,7 +7,7 @@ interface RegionFilterProps {
 }
 
 const RegionFilter = ({ setRegion, regions }: RegionFilterProps) => {
-  const [selectedRegion, setSelectedRegion] = useState('Filter by Region')
+  const [selectedRegion, setSelectedRegion] = useState('All')
 
   const handleRegionChange = (region: string) => {
     setSelectedRegion(region)
@@ -19,7 +19,6 @@ const RegionFilter = ({ setRegion, regions }: RegionFilterProps) => {
       options={regions}
       value={selectedRegion}
       onChange={handleRegionChange}
-      placeholder='Filter by Region'
     />
   )
 }

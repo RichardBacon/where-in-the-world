@@ -20,7 +20,7 @@ const useCountries = ({
 }: UseCountriesProps): UseCountriesReturn => {
   const fields = 'name,capital,population,flags,region,subregion'
   const url =
-    region === 'all'
+    region === 'All'
       ? `https://restcountries.com/v3.1/all?fields=${fields}`
       : `https://restcountries.com/v3.1/region/${region}?fields=${fields}`
 

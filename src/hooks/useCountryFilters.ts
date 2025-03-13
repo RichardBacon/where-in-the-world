@@ -20,7 +20,7 @@ interface CountryFiltersReturn {
 }
 
 const useCountryFilters = (): CountryFiltersReturn => {
-  const [region, setRegion] = useState('all')
+  const [region, setRegion] = useState('All')
   const [search, setSearch] = useState('')
 
   const {
@@ -39,7 +39,7 @@ const useCountryFilters = (): CountryFiltersReturn => {
   return {
     filters: { region, search },
     setters: { setRegion, setSearch },
-    regions,
+    regions: ['All', ...regions],
     countries,
     isLoading: isLoadingRegions || isLoadingCountries,
     error: errorRegions || errorCountries,

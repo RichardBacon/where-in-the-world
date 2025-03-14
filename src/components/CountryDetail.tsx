@@ -9,6 +9,7 @@ const Detail = styled.p`
 
 const DetailLabel = styled.span`
   font-weight: ${({ theme }) => theme.fonts.weight.semiBold};
+  flex-shrink: 0;
 `
 
 const DetailValue = styled.span`

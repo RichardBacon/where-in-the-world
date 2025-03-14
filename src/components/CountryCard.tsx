@@ -21,6 +21,9 @@ const Title = styled.h2`
   font-size: 1.5rem;
   font-weight: ${({ theme }) => theme.fonts.weight.semiBold};
   margin-bottom: 1rem;
+  text-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   @media (min-width: 1024px) {
     font-size: 2rem;

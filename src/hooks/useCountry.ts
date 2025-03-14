@@ -26,7 +26,12 @@ const useCountry = ({ name }: UseCountryProps): UseCountryReturn => {
 
   const error = fetchError ? 'Failed to load. Please try again later.' : null
 
-  const country = useMemo(() => data?.[0], [data])
+  const country = useMemo(() => {
+    if (data && data.length > 1) {
+      return data.find((country) => country.name.common === name)
+    }
+    return data?.[0]
+  }, [data, name])
 
   return { country, isLoading, error, retry }
 }

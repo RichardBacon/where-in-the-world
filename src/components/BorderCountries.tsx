@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import useBorderCountries from '../hooks/useBorderCountries'
 import Button from './Button'
 import ErrorMessage from './ErrorMessage'
-import Loader from './Loader'
 
 const Root = styled.section`
   display: flex;
@@ -43,7 +42,7 @@ const BorderCountries = ({ borders }: BorderCountriesProps) => {
       <Title>Border Countries:</Title>
 
       {isLoading ? (
-        <Loader />
+        <p>Loading border countries...</p>
       ) : error ? (
         <ErrorMessage message={error} retry={retry} />
       ) : (

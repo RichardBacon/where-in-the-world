@@ -44,6 +44,8 @@ const DropdownListItem = styled.li<{ isDarkMode: boolean; isActive: boolean }>`
 `
 
 interface DropdownListProps {
+  id: string
+  label: string
   isDarkMode: boolean
   options: string[]
   activeIndex: number
@@ -52,6 +54,8 @@ interface DropdownListProps {
 }
 
 const DropdownList = ({
+  id,
+  label,
   isDarkMode,
   options,
   activeIndex,
@@ -61,8 +65,8 @@ const DropdownList = ({
   <Root
     isDarkMode={isDarkMode}
     role='listbox'
-    id='region-list'
-    aria-label='Select a region'
+    id={id}
+    aria-label={`Select ${label}`}
   >
     {options.map((option, index) => (
       <DropdownListItem

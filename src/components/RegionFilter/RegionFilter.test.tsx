@@ -11,7 +11,7 @@ describe('RegionFilter', () => {
   it('shows default placeholder', () => {
     render(<RegionFilter setRegion={vi.fn()} regions={mockRegions} />)
 
-    const button = screen.getByRole('button', { name: /select a region/i })
+    const button = screen.getByRole('button', { name: /filter by region/i })
     expect(button).toHaveTextContent('All')
   })
 
@@ -19,7 +19,7 @@ describe('RegionFilter', () => {
     const setRegion = vi.fn()
     render(<RegionFilter setRegion={setRegion} regions={mockRegions} />)
 
-    const button = screen.getByRole('button', { name: /select a region/i })
+    const button = screen.getByRole('button', { name: /filter by region/i })
     await userEvent.click(button)
 
     const option = screen.getByRole('option', { name: 'Europe' })

@@ -16,7 +16,7 @@ const DropdownHeader = styled.div`
   gap: 1rem;
 `
 
-const DropdownLabel = styled.label<{ isDarkMode: boolean }>`
+const DropdownLabel = styled.span<{ isDarkMode: boolean }>`
   font-size: 1.4rem;
   font-weight: 600;
   color: ${({ theme, isDarkMode }) =>
@@ -29,12 +29,13 @@ const DropdownLabel = styled.label<{ isDarkMode: boolean }>`
 
 interface DropdownProps {
   id: string
+  label: string
   options: string[]
   value: string
   onChange: (value: string) => void
 }
 
-const DropDown = ({ id, options, value, onChange }: DropdownProps) => {
+const DropDown = ({ id, label, options, value, onChange }: DropdownProps) => {
   const dropdownRef = useRef<HTMLDivElement>(null)
   const { isDarkMode } = useCustomTheme()
   const { isOpen, setIsOpen, activeIndex, handleKeyDown } = useDropdown({
@@ -60,14 +61,21 @@ const DropDown = ({ id, options, value, onChange }: DropdownProps) => {
   }, [setIsOpen])
 
   return (
-    <DropdownContainer ref={dropdownRef}>
+    <DropdownContainer
+      ref={dropdownRef}
+      role='combobox'
+      aria-expanded={isOpen}
+      aria-controls={id}
+      aria-labelledby={`${id}-label`}
+    >
       <DropdownHeader>
-        <DropdownLabel htmlFor={id} isDarkMode={isDarkMode}>
-          Filter by Region
+        <DropdownLabel id={`${id}-label`} isDarkMode={isDarkMode}>
+          {label}
         </DropdownLabel>
 
         <DropdownButton
           id={id}
+          label={label}
           isDarkMode={isDarkMode}
           isOpen={isOpen}
           value={value}
@@ -77,6 +85,8 @@ const DropDown = ({ id, options, value, onChange }: DropdownProps) => {
       </DropdownHeader>
       {isOpen && (
         <DropdownList
+          id={id}
+          label={label}
           isDarkMode={isDarkMode}
           options={options}
           activeIndex={activeIndex}

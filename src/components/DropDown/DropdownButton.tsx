@@ -37,31 +37,32 @@ const DropdownIcon = styled.div<{ isDarkMode: boolean }>`
 `
 
 interface DropdownButtonProps {
-  id: string
   isDarkMode: boolean
-  isOpen: boolean
+  id: string
+  label: string
   value: string
+  isOpen: boolean
   onKeyDown: (e: React.KeyboardEvent) => void
   onClick: () => void
 }
 
 const DropdownButton = ({
-  id,
   isDarkMode,
-  isOpen,
+  id,
+  label,
   value,
+  isOpen,
   onKeyDown,
   onClick,
 }: DropdownButtonProps) => (
   <Root
-    id={id}
     onClick={onClick}
     onKeyDown={onKeyDown}
     isDarkMode={isDarkMode}
     aria-haspopup='listbox'
+    aria-controls={id}
+    aria-label={`${label}, currently selected: ${value || 'None'}`}
     aria-expanded={isOpen}
-    aria-controls='region-list'
-    aria-label='Select a region'
   >
     {value}
     <DropdownIcon isDarkMode={isDarkMode} aria-hidden='true'>

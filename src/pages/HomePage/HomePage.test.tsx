@@ -48,7 +48,7 @@ describe('HomePage', () => {
     await screen.findByText('France')
 
     await userEvent.click(
-      screen.getByRole('button', { name: /select a region/i }),
+      screen.getByRole('button', { name: /filter by region/i }),
     )
     const dropdownList = screen.getByRole('listbox')
     await userEvent.click(within(dropdownList).getByText('Europe'))

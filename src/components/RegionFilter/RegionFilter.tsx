@@ -17,6 +17,7 @@ const RegionFilter = ({ setRegion, regions }: RegionFilterProps) => {
   return (
     <DropDown
       id='region-filter'
+      label='Filter by Region'
       options={regions}
       value={selectedRegion}
       onChange={handleRegionChange}

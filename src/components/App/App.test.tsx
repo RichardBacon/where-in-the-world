@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 import { axe } from 'vitest-axe'
 import App from './App'
@@ -13,11 +13,14 @@ describe('App', () => {
 
   it('has no accessibility violations', async () => {
     const { container } = render(<App />)
-    const results = await axe(container, {
-      rules: {
-        'color-contrast': { enabled: false },
-      },
+
+    await waitFor(async () => {
+      const results = await axe(container, {
+        rules: {
+          'color-contrast': { enabled: false },
+        },
+      })
+      expect(results.violations.length).toBe(0)
     })
-    expect(results.violations.length).toBe(0)
   })
 })

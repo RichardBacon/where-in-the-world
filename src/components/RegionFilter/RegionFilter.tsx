@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import DropDown from './DropDown'
+import DropDown from '../DropDown'
 
 interface RegionFilterProps {
   setRegion: (region: string) => void

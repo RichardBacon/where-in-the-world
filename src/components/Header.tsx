@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { Link } from 'react-router-dom'
 import useCustomTheme from '../hooks/useCustomTheme'
-import ThemeToggle from './ThemeToggle'
+import ThemeToggle from './ThemeToggle/ThemeToggle'
 
 const Root = styled.header<{ isDarkMode: boolean }>`
   display: flex;

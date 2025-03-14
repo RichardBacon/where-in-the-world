@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { MoonIcon, SunIcon } from '@heroicons/react/24/outline'
-import useCustomTheme from '../hooks/useCustomTheme'
+import useCustomTheme from '../../hooks/useCustomTheme'
 
 const Button = styled.button<{ isDarkMode: boolean }>`
   display: flex;

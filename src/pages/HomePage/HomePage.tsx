@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
-import ContentSection from '../components/ContentSection'
-import FilterSection from '../components/FilterSection'
-import useCountryFilters from '../hooks/useCountryFilters'
+import ContentSection from '../../components/ContentSection'
+import FilterSection from '../../components/FilterSection'
+import useCountryFilters from '../../hooks/useCountryFilters'
 
 const Root = styled.div`
   padding: 2rem 1.6rem;

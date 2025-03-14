@@ -1,10 +1,10 @@
 import styled from '@emotion/styled'
 import { useParams } from 'react-router-dom'
-import BackButton from '../components/BackButton'
-import CountryDetails from '../components/CountryDetails'
-import ErrorMessage from '../components/ErrorMessage'
-import Loader from '../components/Loader'
-import useCountry from '../hooks/useCountry'
+import BackButton from '../../components/BackButton'
+import CountryDetails from '../../components/CountryDetails'
+import ErrorMessage from '../../components/ErrorMessage'
+import Loader from '../../components/Loader'
+import useCountry from '../../hooks/useCountry'
 
 const Root = styled.div`
   padding: 4rem 2.4rem;

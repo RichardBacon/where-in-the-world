@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
-import RegionFilter from './RegionFilter'
-import SearchBar from './SearchBar'
+import RegionFilter from './RegionFilter/RegionFilter'
+import SearchBar from './SearchBar/SearchBar'
 
 const Filters = styled.div`
   display: flex;

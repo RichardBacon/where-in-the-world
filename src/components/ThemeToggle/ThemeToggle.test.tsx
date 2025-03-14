@@ -1,8 +1,8 @@
 import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it } from 'vitest'
-import { testA11y } from '../test-utils/a11yTest'
-import { render } from '../test-utils/customRender'
+import { testA11y } from '../../test-utils/a11yTest'
+import { render } from '../../test-utils/customRender'
 import ThemeToggle from './ThemeToggle'
 
 describe('ThemeToggle', () => {

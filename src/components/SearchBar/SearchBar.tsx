@@ -1,6 +1,6 @@
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 import styled from '@emotion/styled'
-import useCustomTheme from '../hooks/useCustomTheme'
+import useCustomTheme from '../../hooks/useCustomTheme'
 
 const Root = styled.div<{ isDarkMode: boolean }>`
   display: flex;

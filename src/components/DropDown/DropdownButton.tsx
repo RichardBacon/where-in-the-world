@@ -37,6 +37,7 @@ const DropdownIcon = styled.div<{ isDarkMode: boolean }>`
 `
 
 interface DropdownButtonProps {
+  id: string
   isDarkMode: boolean
   isOpen: boolean
   value: string
@@ -45,6 +46,7 @@ interface DropdownButtonProps {
 }
 
 const DropdownButton = ({
+  id,
   isDarkMode,
   isOpen,
   value,
@@ -52,6 +54,7 @@ const DropdownButton = ({
   onClick,
 }: DropdownButtonProps) => (
   <Root
+    id={id}
     onClick={onClick}
     onKeyDown={onKeyDown}
     isDarkMode={isDarkMode}

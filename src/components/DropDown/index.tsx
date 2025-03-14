@@ -28,12 +28,13 @@ const DropdownLabel = styled.label<{ isDarkMode: boolean }>`
 `
 
 interface DropdownProps {
+  id: string
   options: string[]
   value: string
   onChange: (value: string) => void
 }
 
-const DropDown = ({ options, value, onChange }: DropdownProps) => {
+const DropDown = ({ id, options, value, onChange }: DropdownProps) => {
   const dropdownRef = useRef<HTMLDivElement>(null)
   const { isDarkMode } = useCustomTheme()
   const { isOpen, setIsOpen, activeIndex, handleKeyDown } = useDropdown({
@@ -61,9 +62,12 @@ const DropDown = ({ options, value, onChange }: DropdownProps) => {
   return (
     <DropdownContainer ref={dropdownRef}>
       <DropdownHeader>
-        <DropdownLabel isDarkMode={isDarkMode}>Filter by Region</DropdownLabel>
+        <DropdownLabel htmlFor={id} isDarkMode={isDarkMode}>
+          Filter by Region
+        </DropdownLabel>
 
         <DropdownButton
+          id={id}
           isDarkMode={isDarkMode}
           isOpen={isOpen}
           value={value}

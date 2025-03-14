@@ -1,50 +1,63 @@
-# React + TypeScript + Vite
+# 🌍 Where in the World
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive and accessible country search app built with modern web technologies. This project focuses on API integration, theme persistence, and optimised performance while maintaining a clean user experience.
 
-Currently, two official plugins are available:
+## 🔗 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[Live App](https://where-in-the-world-nine-rho.vercel.app/)
 
-## Expanding the ESLint configuration
+## 📌 Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+✅ **Country Exploration** – Browse all countries with essential details  
+✅ **Search & Filtering** – Search by name and filter countries by region with a dropdown  
+✅ **Dark Mode with Persistence** – Theme settings persist across sessions  
+✅ **Optimised Performance** – Optimised load times and efficient rendering  
+✅ **Accessibility-First** – Full keyboard & screen reader support  
+✅ **Responsive UI** – Mobile-first design with optimised layouts  
+✅ **Error Handling** – API failure handling with retry functionality
 
-- Configure the top-level `parserOptions` property like this:
+## 🛠️ Technical Stack
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- **Frontend:** React 19 (Vite) + TypeScript
+- **Styling:** Emotion (CSS-in-JS) with theme support
+- **Routing:** React Router for dynamic country details
+- **API Integration:** REST Countries API
+- **Testing:** Vitest + React Testing Library (with MSW for API mocking)
+- **Code Quality:** ESLint & Prettier
+
+## 🎯 Challenge & Inspiration
+
+This project is based on the **[REST Countries API with Color Theme Switcher Challenge](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca)** from **Frontend Mentor**.  
+The challenge provided an opportunity to practice API integration, theming, and accessibility best practices.
+
+## 🚦 Getting Started
+
+```bash
+# Clone the repository
+git clone https://github.com/richardbacon/where-in-the-world.git
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Run tests
+npm test
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## 🚀 Future Enhancements
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- Improve small-screen typography for better readability
+- Enhance search with deep linking (URL params for filtering)
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## 👤 Author
+
+Richard Bacon
+
+- GitHub: [@richardbacon](https://github.com/richardbacon)
+- LinkedIn: [Richard Bacon](https://www.linkedin.com/in/richardjohnbacon/)
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).

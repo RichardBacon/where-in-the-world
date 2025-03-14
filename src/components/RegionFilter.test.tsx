@@ -12,7 +12,7 @@ describe('RegionFilter', () => {
     render(<RegionFilter setRegion={vi.fn()} regions={mockRegions} />)
 
     const button = screen.getByRole('button', { name: /select a region/i })
-    expect(button).toHaveTextContent('Filter by Region')
+    expect(button).toHaveTextContent('All')
   })
 
   it('allows selecting a region', async () => {

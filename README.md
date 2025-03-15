@@ -46,6 +46,11 @@ npm run dev
 npm test
 ```
 
+## 📚 Case Study
+
+For a detailed breakdown of the project's challenges, solutions, and key technical decisions, read the **full case study**:  
+📄 **[Where in the World? Case Study](./CASE_STUDY.md)**
+
 ## 🚀 Future Enhancements
 
 - Improve small-screen typography for better readability

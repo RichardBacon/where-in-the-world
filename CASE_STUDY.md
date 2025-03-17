@@ -99,7 +99,6 @@ Vite was chosen for its fast build times and efficient module handling, ensuring
 
 ### What Could Be Improved?
 
-🔹 Implement deep linking for filtering to allow users to share specific search results.  
 🔹 Explore Progressive Web App (PWA) support for offline access.  
 🔹 Enhance country details with additional data visualisations.
 

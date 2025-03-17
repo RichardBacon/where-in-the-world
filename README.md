@@ -54,7 +54,6 @@ For a detailed breakdown of the project's challenges, solutions, and key technic
 ## 🚀 Future Enhancements
 
 - Improve small-screen typography for better readability
-- Enhance search with deep linking (URL params for filtering)
 
 ## 👤 Author
 

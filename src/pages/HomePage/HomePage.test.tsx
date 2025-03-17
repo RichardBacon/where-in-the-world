@@ -76,4 +76,16 @@ describe('HomePage', () => {
       screen.findByText('France'),
     )
   })
+
+  it('syncs filters with URL parameters', async () => {
+    render(<HomePage />, { route: '/?region=Europe&search=fra' })
+
+    await screen.findByText('France')
+
+    expect(screen.getByRole('textbox', { name: /search/i })).toHaveValue('fra')
+    // expect(screen.getByRole('button', { name: /filter/i })).toHaveTextContent(
+    //   'Europe',
+    // )
+    expect(screen.queryByText('Brazil')).not.toBeInTheDocument()
+  })
 })

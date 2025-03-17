@@ -9,7 +9,9 @@ describe('RegionFilter', () => {
   const mockRegions = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania']
 
   it('shows default placeholder', () => {
-    render(<RegionFilter setRegion={vi.fn()} regions={mockRegions} />)
+    render(
+      <RegionFilter setRegion={vi.fn()} regions={mockRegions} region='All' />,
+    )
 
     const button = screen.getByRole('button', { name: /filter by region/i })
     expect(button).toHaveTextContent('All')
@@ -17,7 +19,9 @@ describe('RegionFilter', () => {
 
   it('allows selecting a region', async () => {
     const setRegion = vi.fn()
-    render(<RegionFilter setRegion={setRegion} regions={mockRegions} />)
+    render(
+      <RegionFilter setRegion={setRegion} regions={mockRegions} region='All' />,
+    )
 
     const button = screen.getByRole('button', { name: /filter by region/i })
     await userEvent.click(button)
@@ -29,6 +33,8 @@ describe('RegionFilter', () => {
   })
 
   it('has no accessibility violations', async () => {
-    await testA11y(<RegionFilter setRegion={() => {}} regions={mockRegions} />)
+    await testA11y(
+      <RegionFilter setRegion={() => {}} regions={mockRegions} region='All' />,
+    )
   })
 })

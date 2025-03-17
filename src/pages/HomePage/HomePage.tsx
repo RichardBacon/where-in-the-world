@@ -25,6 +25,7 @@ const HomePage = () => {
         setSearch={setters.setSearch}
         setRegion={setters.setRegion}
         regions={regions}
+        region={filters.region}
       />
       <ContentSection
         isLoading={isLoading}

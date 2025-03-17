@@ -1,26 +1,19 @@
-import { useState } from 'react'
 import DropDown from '../DropDown'
 
 interface RegionFilterProps {
   setRegion: (region: string) => void
   regions: string[]
+  region: string
 }
 
-const RegionFilter = ({ setRegion, regions }: RegionFilterProps) => {
-  const [selectedRegion, setSelectedRegion] = useState('All')
-
-  const handleRegionChange = (region: string) => {
-    setSelectedRegion(region)
-    setRegion(region)
-  }
-
+const RegionFilter = ({ setRegion, regions, region }: RegionFilterProps) => {
   return (
     <DropDown
       id='region-filter'
       label='Filter by Region'
       options={regions}
-      value={selectedRegion}
-      onChange={handleRegionChange}
+      value={region}
+      onChange={setRegion}
     />
   )
 }

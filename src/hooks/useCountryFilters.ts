@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import { CountryCardData } from '../types/Country'
 import useCountries from './useCountries'
 import useRegions from './useRegions'
@@ -20,8 +21,49 @@ interface CountryFiltersReturn {
 }
 
 const useCountryFilters = (): CountryFiltersReturn => {
-  const [region, setRegion] = useState('All')
-  const [search, setSearch] = useState('')
+  const [searchParams, setSearchParams] = useSearchParams()
+  const [region, setRegion] = useState(searchParams.get('region') || 'All')
+  const [search, setSearch] = useState(searchParams.get('search') || '')
+
+  const handleRegionChange = (newRegion: string) => {
+    setRegion(newRegion)
+    setSearchParams(
+      (params) => {
+        const newParams = new URLSearchParams(params)
+        if (newRegion === 'All') {
+          newParams.delete('region')
+        } else {
+          newParams.set('region', newRegion)
+        }
+        return newParams
+      },
+      { replace: true },
+    )
+  }
+
+  const handleSearchChange = (newSearch: string) => {
+    setSearch(newSearch)
+    setSearchParams(
+      (params) => {
+        const newParams = new URLSearchParams(params)
+        if (!newSearch) {
+          newParams.delete('search')
+        } else {
+          newParams.set('search', newSearch)
+        }
+        return newParams
+      },
+      { replace: true },
+    )
+  }
+
+  useEffect(() => {
+    const urlRegion = searchParams.get('region')
+    const urlSearch = searchParams.get('search')
+
+    setRegion(urlRegion || 'All')
+    setSearch(urlSearch || '')
+  }, [searchParams])
 
   const {
     regions,
@@ -38,7 +80,10 @@ const useCountryFilters = (): CountryFiltersReturn => {
 
   return {
     filters: { region, search },
-    setters: { setRegion, setSearch },
+    setters: {
+      setRegion: handleRegionChange,
+      setSearch: handleSearchChange,
+    },
     regions: ['All', ...regions],
     countries,
     isLoading: isLoadingRegions || isLoadingCountries,

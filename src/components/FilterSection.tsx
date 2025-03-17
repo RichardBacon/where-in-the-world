@@ -19,6 +19,7 @@ interface FilterSectionProps {
   setSearch: (search: string) => void
   setRegion: (region: string) => void
   regions: string[]
+  region: string
 }
 
 const FilterSection = ({
@@ -26,10 +27,11 @@ const FilterSection = ({
   setSearch,
   setRegion,
   regions,
+  region,
 }: FilterSectionProps) => (
   <Filters aria-label='Filter controls'>
     <SearchBar search={search} setSearch={setSearch} />
-    <RegionFilter setRegion={setRegion} regions={regions} />
+    <RegionFilter setRegion={setRegion} regions={regions} region={region} />
   </Filters>
 )
 

@@ -16,6 +16,12 @@ const Root = styled.button<{ isDarkMode: boolean }>`
     isDarkMode ? theme.colors.dark.text : theme.colors.light.text};
   width: 10rem;
   height: 3.6rem;
+
+  @media (min-width: 1024px) {
+    width: 12rem;
+    height: 4rem;
+    font-size: 1.6rem;
+  }
 `
 
 interface ButtonProps {

@@ -33,13 +33,13 @@ const DropdownListItem = styled.li<{ isDarkMode: boolean; isActive: boolean }>`
       isDarkMode ? theme.colors.dark.hover : theme.colors.light.hover};
   }
 
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   color: ${({ theme, isDarkMode }) =>
     isDarkMode ? theme.colors.dark.text : theme.colors.light.text};
   font-weight: ${({ theme }) => theme.fonts.weight.regular};
 
   @media (min-width: 1024px) {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
   }
 `
 

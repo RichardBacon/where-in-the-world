@@ -7,7 +7,7 @@ const Root = styled.button<{ isDarkMode: boolean }>`
   background-color: ${({ theme, isDarkMode }) =>
     isDarkMode ? theme.colors.dark.elements : theme.colors.light.elements};
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: ${({ theme }) => theme.fonts.weight.regular};
   color: ${({ theme, isDarkMode }) =>
     isDarkMode ? theme.colors.dark.text : theme.colors.light.text};
@@ -20,7 +20,7 @@ const Root = styled.button<{ isDarkMode: boolean }>`
   height: 5rem;
 
   @media (min-width: 1024px) {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
   }
 `
 

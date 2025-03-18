@@ -18,7 +18,7 @@ const Card = styled.div<{ isDarkMode: boolean }>`
 `
 
 const Title = styled.h2`
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: ${({ theme }) => theme.fonts.weight.semiBold};
   margin-bottom: 1rem;
   text-wrap: nowrap;
@@ -45,11 +45,11 @@ const Details = styled.div`
 `
 
 const Detail = styled.p`
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: ${({ theme }) => theme.fonts.weight.light};
 
   @media (min-width: 1024px) {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
   }
 `
 

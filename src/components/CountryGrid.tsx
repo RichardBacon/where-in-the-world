@@ -5,8 +5,12 @@ import CountryCard from './CountryCard'
 const Grid = styled.section`
   display: grid;
   gap: 4rem;
-  grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
-  justify-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(32rem, auto));
+  justify-content: center;
+
+  @media (min-width: 1024px) {
+    justify-content: start;
+  }
 `
 
 const CountryGrid = ({ countries }: { countries: CountryCardData[] }) => {

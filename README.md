@@ -4,7 +4,7 @@ A responsive and accessible country search app built with modern web technologie
 
 ## 🔗 Live Demo
 
-[Live App](https://where-in-the-world-nine-rho.vercel.app/)
+[Live App](https://where-in-the-world-uk.vercel.app/)
 
 ## 📌 Features
 

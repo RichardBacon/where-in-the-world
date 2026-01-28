@@ -1,6 +1,6 @@
 # Case Study: Where in the World?
 
-## 1️⃣ Introduction
+## Introduction
 
 Where in the World? is a responsive and accessible country search application built using React 19, Vite, and TypeScript. Developed as a challenge from Frontend Mentor, the project became an opportunity to refine skills in performance optimisation, accessibility, and developer experience while integrating the REST Countries API.
 
@@ -8,15 +8,15 @@ The goal was to create an interactive user experience while implementing best pr
 
 ### Key Achievements:
 
-✅ Built a high-performance React application with optimised rendering.  
-✅ Implemented comprehensive accessibility features, ensuring full keyboard and screen reader support.  
-✅ Created a responsive design with persistent theme.  
-✅ Developed robust API handling, including error management and retry logic.  
-✅ Applied frontend optimisations, including lazy loading and code splitting
+- Built a high-performance React application with optimised rendering.  
+- Implemented comprehensive accessibility features, ensuring full keyboard and screen reader support.  
+- Created a responsive design with persistent theme.  
+- Developed robust API handling, including error management and retry logic.  
+- Applied frontend optimisations, including lazy loading and code splitting
 
 ---
 
-## 2️⃣ Challenges & Solutions
+## Challenges & Solutions
 
 ### Challenge 1: Performance with Large Datasets
 
@@ -50,7 +50,7 @@ The goal was to create an interactive user experience while implementing best pr
 
 ---
 
-## 3️⃣ Key Technical Decisions
+## Key Technical Decisions
 
 ### Why Vite?
 
@@ -68,7 +68,7 @@ Vite was chosen for its fast build times and efficient module handling, ensuring
 
 ---
 
-## 4️⃣ Testing Strategy & Code Quality
+## Testing Strategy & Code Quality
 
 - Comprehensive test coverage ensured that API calls, navigation, and theme persistence were reliable across different use cases.
 - Mock Service Worker (MSW) was used to simulate API failures, improving resilience and ensuring fallback behavior was handled properly.
@@ -76,38 +76,38 @@ Vite was chosen for its fast build times and efficient module handling, ensuring
 
 ---
 
-## 5️⃣ Results & Impact
+## Results & Impact
 
 ### Key Outcomes:
 
-✅ Full accessibility compliance in Lighthouse, Axe and WAVE.  
-✅ Responsive UI across all screen sizes.  
-✅ Optimised API usage, reducing unnecessary requests and improving scalability.  
-✅ Handled API failures gracefully to enhance reliability.  
-✅ Improved developer experience with clear project structure and strong test coverage.
+- Full accessibility compliance in Lighthouse, Axe and WAVE.  
+- Responsive UI across all screen sizes.  
+- Optimised API usage, reducing unnecessary requests and improving scalability.  
+- Handled API failures gracefully to enhance reliability.  
+- Improved developer experience with clear project structure and strong test coverage.
 
 ---
 
-## 5️⃣ Lessons Learned & Future Enhancements
+## Lessons Learned & Future Enhancements
 
 ### What Worked Well?
 
-✅ Vite’s fast build times and efficient bundling streamlined development.  
-✅ Lazy loading and caching strategies effectively reduced API strain and improved rendering speeds.  
-✅ Prioritising accessibility from the start led to a fully inclusive experience.  
-✅ Custom hooks and reusable components improved code maintainability.
+- Vite’s fast build times and efficient bundling streamlined development.  
+- Lazy loading and caching strategies effectively reduced API strain and improved rendering speeds.  
+- Prioritising accessibility from the start led to a fully inclusive experience.  
+- Custom hooks and reusable components improved code maintainability.
 
 ### What Could Be Improved?
 
-🔹 Explore Progressive Web App (PWA) support for offline access.  
-🔹 Enhance country details with additional data visualisations.
+- Explore Progressive Web App (PWA) support for offline access.  
+- Enhance country details with additional data visualisations.
 
 ### Lessons Learned
 
-📌 One key learning from this project was the importance of testing performance metrics before making optimisations. While accessibility and UI improvements were successfully implemented, future projects will benefit from a before-and-after comparison to validate changes.
+One key learning from this project was the importance of testing performance metrics before making optimisations. While accessibility and UI improvements were successfully implemented, future projects will benefit from a before-and-after comparison to validate changes.
 
 ---
 
-## 🎯 Conclusion
+## Conclusion
 
 This project reinforced key frontend development skills, focusing on performance optimisation, accessibility, and API integration. By leveraging best practices and modern tools, _Where in the World?_ demonstrates an efficient, scalable approach to building interactive web applications.

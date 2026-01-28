@@ -1,22 +1,22 @@
-# 🌍 Where in the World
+# Where in the World
 
 A responsive and accessible country search app built with modern web technologies. This project focuses on API integration, theme persistence, and optimised performance while maintaining a clean user experience.
 
-## 🔗 Live Demo
+## Live Demo
 
-[Live App](https://where-in-the-world-uk.vercel.app/)
+[Where in the World](https://where-in-the-world-uk.vercel.app/)
 
-## 📌 Features
+## Features
 
-✅ **Country Exploration** – Browse all countries with essential details  
-✅ **Search & Filtering** – Search by name and filter countries by region with a dropdown  
-✅ **Dark Mode with Persistence** – Theme settings persist across sessions  
-✅ **Optimised Performance** – Optimised load times and efficient rendering  
-✅ **Accessibility-First** – Full keyboard & screen reader support  
-✅ **Responsive UI** – Mobile-first design with optimised layouts  
-✅ **Error Handling** – API failure handling with retry functionality
+**Country Exploration** – Browse all countries with essential details  
+**Search & Filtering** – Search by name and filter countries by region with a dropdown  
+**Dark Mode with Persistence** – Theme settings persist across sessions  
+**Optimised Performance** – Optimised load times and efficient rendering  
+**Accessibility-First** – Full keyboard & screen reader support  
+**Responsive UI** – Mobile-first design with optimised layouts  
+**Error Handling** – API failure handling with retry functionality
 
-## 🛠️ Technical Stack
+## Technical Stack
 
 - **Frontend:** React 19 (Vite) + TypeScript
 - **Styling:** Emotion (CSS-in-JS) with theme support
@@ -25,12 +25,12 @@ A responsive and accessible country search app built with modern web technologie
 - **Testing:** Vitest + React Testing Library (with MSW for API mocking)
 - **Code Quality:** ESLint & Prettier
 
-## 🎯 Challenge & Inspiration
+## Challenge & Inspiration
 
 This project is based on the **[REST Countries API with Color Theme Switcher Challenge](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca)** from **Frontend Mentor**.  
 The challenge provided an opportunity to practice API integration, theming, and accessibility best practices.
 
-## 🚦 Getting Started
+## Getting Started
 
 ```bash
 # Clone the repository
@@ -46,22 +46,18 @@ npm run dev
 npm test
 ```
 
-## 📚 Case Study
+## Case Study
 
 For a detailed breakdown of the project's challenges, solutions, and key technical decisions, read the **full case study**:  
 📄 **[Where in the World? Case Study](./CASE_STUDY.md)**
 
-## 🚀 Future Enhancements
-
-- Improve small-screen typography for better readability
-
-## 👤 Author
+## Author
 
 Richard Bacon
 
 - GitHub: [@richardbacon](https://github.com/richardbacon)
 - LinkedIn: [Richard Bacon](https://www.linkedin.com/in/richardjohnbacon/)
 
-## 📄 License
+## License
 
 This project is open source and available under the [MIT License](LICENSE).
